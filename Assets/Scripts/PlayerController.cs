@@ -9,16 +9,20 @@ public class PlayerController : MonoBehaviour
     /// </summary>
 
     //Variáveis de movimento
-    private float vel = 4f;
+    private float vel = 7f;
 
     //Variáveis para pegar componentes do Player
     [SerializeField] private Rigidbody2D meuRB;
+
+    //Variáveis para pegar objetos do jogo
+    [SerializeField] private GameObject tiro;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //Pegando meu RigidBody
         meuRB = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -37,7 +41,28 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 movimento = value.Get<Vector2>();
 
+        //Normalizando minha velocidade nas diagonais também
+        movimento.Normalize();
+
         //Aplicando esse movimento no meu RB
         meuRB.linearVelocity = movimento * vel;
+
+    }
+
+    private void OnShot(InputValue value) //Pega o input para atirar
+    {
+        //SE o botão de atirar foi pressionado
+        if (value.isPressed)
+        {
+            //Crio a instancia do tiro, no meu X e meu Y definido no paínel do Unity
+            tiro = Instantiate(tiro, transform.position, Quaternion.identity);
+
+            //Pega o rigidbody do tiro e coloca em uma nova variável
+            Rigidbody2D novoTiro = tiro.GetComponent<Rigidbody2D>();
+
+            //Faz ele ir para cima
+            novoTiro.linearVelocity = Vector2.up * vel;
+            
+        }
     }
 }

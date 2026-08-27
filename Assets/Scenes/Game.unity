@@ -413,7 +413,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemie01Controller
   meuRB: {fileID: 0}
-  velocidade: 3
+  tiroInimigo: {fileID: 8664257818524069899, guid: 91afbbd5adf1de94fa483c70e24bc72a, type: 3}
+  velocidade: 1
+  shotVel: 4
+  shotTimer: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,8 +665,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1478376673
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2408966869642464458, guid: e226c9ae15b474a4cafeb2486a7bc540, type: 3}

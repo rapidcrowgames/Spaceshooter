@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -2053723161299878990}
   - component: {fileID: 1271766527005624224}
   - component: {fileID: 4896356088617121216}
+  - component: {fileID: -2493479490079785429}
   m_Layer: 0
   m_Name: player_shot
   m_TagString: Untagged
@@ -121,6 +122,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.0035619736}
   m_Size: {x: 0.18, y: 0.26540875}
   m_Direction: 0
+--- !u!114 &-2493479490079785429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2944748556789584560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223a4e565ad646e49990337d3fe291f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShotController
+  eu: {fileID: 2944748556789584560}
 --- !u!1 &3861297645329239504
 GameObject:
   m_ObjectHideFlags: 0

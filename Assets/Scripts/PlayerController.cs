@@ -55,13 +55,13 @@ public class PlayerController : MonoBehaviour
         if (value.isPressed)
         {
             //Crio a instancia do tiro, no meu X e meu Y definido no paínel do Unity
-            tiro = Instantiate(tiro, transform.position, Quaternion.identity);
+            GameObject novoTiro = Instantiate(tiro, transform.position, Quaternion.identity);
 
             //Pega o rigidbody do tiro e coloca em uma nova variável
-            Rigidbody2D novoTiro = tiro.GetComponent<Rigidbody2D>();
+            Rigidbody2D rbTiro = novoTiro.GetComponent<Rigidbody2D>();
 
             //Faz ele ir para cima
-            novoTiro.linearVelocity = Vector2.up * vel;
+            rbTiro.linearVelocity = Vector2.up * vel;
             
         }
     }

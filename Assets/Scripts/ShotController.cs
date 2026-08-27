@@ -17,11 +17,18 @@ public class ShotController : MonoBehaviour
         
     }
 
-    //Evento de colisão com Trigger de destruir os tiros
+    //Evento de colisão com objetos do jogo (Inimigo, colisores, etc)
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Colisor"))
+        if (other.CompareTag("Colisor")) //Colisor que destroi o tiro fora da tela
         {
+            //Me destruo
+            Destroy(eu);
+        }
+
+        if (other.CompareTag("Enemy")) //Colide com os inimigos
+        {
+            //Me destruo
             Destroy(eu);
         }
     }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Colisor
   - Destruidor
+  - Enemy
+  - Jogador
   layers:
   - Default
   - TransparentFX

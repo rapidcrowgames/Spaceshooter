@@ -17,9 +17,16 @@ public class Enemie01ShotController : MonoBehaviour
     //Colisor para se destruir com o DESTRUIDOR
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Destruidor"))
+        if (other.CompareTag("Destruidor")) //Se eu colidir com o paredão
         {
             Destroy(gameObject); //Destruo eu mesmo
+        }
+
+        //SE eu colidir com o player
+        if (other.CompareTag("Jogador"))
+        {
+            //Me destruo
+            Destroy(gameObject); 
         }
     }
 }

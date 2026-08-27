@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D meuRB;
 
     //Variáveis para pegar objetos do jogo
-    [SerializeField] private GameObject tiro;
+    [SerializeField] private GameObject tiro; //Pega o objeto tiro
+
+    [SerializeField] private Transform shotPosition; //Pega a posição de onde será criado o tiro
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -55,7 +57,7 @@ public class PlayerController : MonoBehaviour
         if (value.isPressed)
         {
             //Crio a instancia do tiro, no meu X e meu Y definido no paínel do Unity
-            GameObject novoTiro = Instantiate(tiro, transform.position, Quaternion.identity);
+            GameObject novoTiro = Instantiate(tiro, shotPosition.position, Quaternion.identity);
 
             //Pega o rigidbody do tiro e coloca em uma nova variável
             Rigidbody2D rbTiro = novoTiro.GetComponent<Rigidbody2D>();

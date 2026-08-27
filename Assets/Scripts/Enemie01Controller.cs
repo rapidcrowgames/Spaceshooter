@@ -17,7 +17,7 @@ public class Enemie01Controller : MonoBehaviour
     [SerializeField] private float shotVel = 4f;
 
     //Variáveis do timer do tiro
-    [SerializeField] private float shotTimer = 2f;
+    [SerializeField] private float shotTimer = 0.9f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -57,8 +57,8 @@ public class Enemie01Controller : MonoBehaviour
             //Dou velocidade a ele
             rbTiro.linearVelocity = new Vector2(0f, -shotVel);
 
-            //Reinicio o timer
-            shotTimer = 2f;
+            //Reinicio o timer de forma aleatória
+            shotTimer = Random.Range(0.8f, 1f);
         }
     }
 

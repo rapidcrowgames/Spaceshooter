@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 915217629271740810}
   - component: {fileID: 1693098713467357089}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tiro_1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 698364689262078121}
   - component: {fileID: 8040942597988484052}
   - component: {fileID: -765818972638951551}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy01_shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

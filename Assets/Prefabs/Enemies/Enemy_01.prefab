@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4721914479374127251}
   - component: {fileID: 1941901936237757600}
   - component: {fileID: 5153017186178673535}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: inimigo_1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 178194139536695407}
   - component: {fileID: 2306920781285471887}
   - component: {fileID: 1718760502188326494}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ MonoBehaviour:
   tiroInimigo: {fileID: 8664257818524069899, guid: 91afbbd5adf1de94fa483c70e24bc72a, type: 3}
   velocidade: 1
   shotVel: 4
-  shotTimer: 2
+  shotTimer: 0.9
 --- !u!58 &1718760502188326494
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -223,7 +223,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

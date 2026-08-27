@@ -61,4 +61,13 @@ public class Enemie01Controller : MonoBehaviour
             shotTimer = 2f;
         }
     }
+
+    //Colisor para se destruir com o DESTRUIDOR
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Destruidor"))
+        {
+            Destroy(gameObject); //Destruo eu mesmo
+        }
+    }
 }

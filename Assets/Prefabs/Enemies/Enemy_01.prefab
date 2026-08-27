@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0462bd75d4e2cf47976c79343e2ecbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemie01Controller
+  life: 1
   meuRB: {fileID: 0}
   tiroInimigo: {fileID: 8664257818524069899, guid: 91afbbd5adf1de94fa483c70e24bc72a, type: 3}
   shotPosition: {fileID: 6911447601807838500}

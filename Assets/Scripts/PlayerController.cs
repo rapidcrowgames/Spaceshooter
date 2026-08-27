@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     //Variáveis de movimento
     private float vel = 7f;
 
+    //Variáveis de vida
+    [SerializeField] private int life = 5;
+
     //Variáveis para pegar componentes do Player
     [SerializeField] private Rigidbody2D meuRB;
 
@@ -33,6 +36,10 @@ public class PlayerController : MonoBehaviour
         ///<summary>
         /// USA OS MÉTODOS
         /// </summary>
+
+        perdeVida(); //Método de morrer
+
+        Debug.Log(life);
     }
 
     ///<summary>
@@ -67,4 +74,26 @@ public class PlayerController : MonoBehaviour
             
         }
     }
+
+    //Evento de colisão com o tiro do inimigo
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //SE eu colidir com o tiro do inimigo
+        if (other.CompareTag("shotEnemy"))
+        {
+            life--;
+        }
+    }
+
+    //MÉTODO de perder vida
+    private void perdeVida()
+    {
+        //SE minha vida chegar a 0 ou menos, eu morro
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
 }

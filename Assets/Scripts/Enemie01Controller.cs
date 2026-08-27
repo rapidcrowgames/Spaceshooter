@@ -6,12 +6,14 @@ public class Enemie01Controller : MonoBehaviour
     /// VARIÁVEIS DE CONTROLE
     /// </summary>
 
+    //Variáveis de vida
+    [SerializeField] private int life = 1;
+    
     //Variável para pegar componentes do inimigo 01
     [SerializeField] private Rigidbody2D meuRB;
 
     //Variável para pegar objetos do jogo
     [SerializeField] private GameObject tiroInimigo; //Pega o tiro do inimigo
-
     [SerializeField] private Transform shotPosition; //Pega a posição de onde meu tiro deve nascer
 
     //Variáveis de movimento
@@ -37,6 +39,7 @@ public class Enemie01Controller : MonoBehaviour
         //Usa os métodos
         EnemyShot(); //Método do tiro do inimigo
 
+        DeathEnemy(); //Método de morrer
     }
 
     //MÉTODOS
@@ -74,6 +77,23 @@ public class Enemie01Controller : MonoBehaviour
         if (other.CompareTag("Destruidor"))
         {
             Destroy(gameObject); //Destruo eu mesmo
+        }
+
+        //SE eu colidir com o tiro do player
+        if (other.CompareTag("shotPlayer"))
+        {
+            //Eu perco vida
+            life--;
+        }
+    }
+
+    //Método de morte
+    private void DeathEnemy()
+    {
+        //SE minha vida chegar a 0 ou menor, eu me destruo / morro
+        if (life <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

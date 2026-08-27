@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: -765818972638951551}
   m_Layer: 9
   m_Name: Enemy01_shot
-  m_TagString: Untagged
+  m_TagString: shotEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

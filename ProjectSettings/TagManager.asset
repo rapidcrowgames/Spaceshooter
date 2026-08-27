@@ -8,6 +8,8 @@ TagManager:
   - Destruidor
   - Enemy
   - Jogador
+  - shotPlayer
+  - shotEnemy
   layers:
   - Default
   - TransparentFX

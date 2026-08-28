@@ -78,13 +78,6 @@ public class Enemie01Controller : MonoBehaviour
         {
             Destroy(gameObject); //Destruo eu mesmo
         }
-
-        //SE eu colidir com o tiro do player
-        if (other.CompareTag("shotPlayer"))
-        {
-            //Eu perco vida
-            life--;
-        }
     }
 
     //Método de morte
@@ -95,5 +88,12 @@ public class Enemie01Controller : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    //Método de perder vida
+    public void perdeVida(int value)
+    {
+        //SE o tiro do player me acertar eu perco um determinado valor de vida
+        life -= value;
     }
 }

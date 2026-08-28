@@ -12,9 +12,11 @@ public class Enemie01Controller : MonoBehaviour
     //Variável para pegar componentes do inimigo 01
     [SerializeField] private Rigidbody2D meuRB;
 
-    //Variável para pegar objetos do jogo
+    //Variável para pegar objetos ou componentes de objetos do jogo
     [SerializeField] private GameObject tiroInimigo; //Pega o tiro do inimigo
     [SerializeField] private Transform shotPosition; //Pega a posição de onde meu tiro deve nascer
+
+    [SerializeField] private GameObject particulaMorte; //Pega a particula de morte do inimigo
 
     //Variáveis de movimento
     [SerializeField] private float velocidade = 1f;
@@ -86,6 +88,12 @@ public class Enemie01Controller : MonoBehaviour
         //SE minha vida chegar a 0 ou menor, eu me destruo / morro
         if (life <= 0)
         {
+            //Crio a particula da morte
+            GameObject deathParty = Instantiate(particulaMorte, transform.position, Quaternion.identity);
+
+            //Depois de 1f segundos eu me destruo
+            Destroy(deathParty, 1f);
+
             Destroy(gameObject);
         }
     }

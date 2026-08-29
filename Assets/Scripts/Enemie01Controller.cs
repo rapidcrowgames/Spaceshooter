@@ -69,9 +69,14 @@ public class Enemie01Controller : MonoBehaviour
             rbTiro.linearVelocity = new Vector2(0f, -shotVel);
 
             //Reinicio o timer de forma aleatória
-            shotTimer = Random.Range(0.8f, 1f);
+            shotTimer = Random.Range(0.8f, 1.8f);
         }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="other"></param>
 
     //Colisor para se destruir com o DESTRUIDOR
     private void OnTriggerEnter2D(Collider2D other)

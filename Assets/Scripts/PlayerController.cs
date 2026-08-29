@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     //Variáveis para pegar objetos do jogo
     [SerializeField] private GameObject tiro; //Pega o objeto tiro
 
+    [SerializeField] private GameObject particulaMorte; //Pega a particula da minha morte
+
     [SerializeField] private Transform shotPosition; //Pega a posição de onde será criado o tiro
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -91,6 +93,13 @@ public class PlayerController : MonoBehaviour
         //SE minha vida chegar a 0 ou menos, eu morro
         if (life <= 0)
         {
+            //Crio a particula de morte
+            GameObject deathParty = Instantiate(particulaMorte, transform.position, Quaternion.identity);
+
+            //Destruo a particula em 1 segundo
+            Destroy(deathParty, 1f);
+
+            //Me destruo
             Destroy(gameObject);
         }
     }

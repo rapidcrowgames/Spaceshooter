@@ -1,13 +1,10 @@
 using UnityEngine;
 
-public class Enemie01Controller : MonoBehaviour
+public class Enemie01Controller : EnemyFather
 {
     /// <summary>
     /// VARIÁVEIS DE CONTROLE
     /// </summary>
-
-    //Variáveis de vida
-    [SerializeField] private int life = 1;
     
     //Variável para pegar componentes do inimigo 01
     [SerializeField] private Rigidbody2D meuRB;
@@ -15,12 +12,6 @@ public class Enemie01Controller : MonoBehaviour
     //Variável para pegar objetos ou componentes de objetos do jogo
     [SerializeField] private GameObject tiroInimigo; //Pega o tiro do inimigo
     [SerializeField] private Transform shotPosition; //Pega a posição de onde meu tiro deve nascer
-
-    [SerializeField] private GameObject particulaMorte; //Pega a particula de morte do inimigo
-
-    //Variáveis de movimento
-    [SerializeField] private float velocidade = 1f;
-    [SerializeField] private float shotVel = 4f;
 
     //Variáveis do timer do tiro
     [SerializeField] private float shotTimer = 0.9f;
@@ -87,26 +78,4 @@ public class Enemie01Controller : MonoBehaviour
         }
     }
 
-    //Método de morte
-    private void DeathEnemy()
-    {
-        //SE minha vida chegar a 0 ou menor, eu me destruo / morro
-        if (life <= 0)
-        {
-            //Crio a particula da morte
-            GameObject deathParty = Instantiate(particulaMorte, transform.position, Quaternion.identity);
-
-            //Depois de 1f segundos eu me destruo
-            Destroy(deathParty, 1f);
-
-            Destroy(gameObject);
-        }
-    }
-
-    //Método de perder vida
-    public void perdeVida(int value)
-    {
-        //SE o tiro do player me acertar eu perco um determinado valor de vida
-        life -= value;
-    }
 }

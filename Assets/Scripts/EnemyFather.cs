@@ -3,10 +3,10 @@ using UnityEngine;
 public class EnemyFather : MonoBehaviour
 {
     //Variáveis do PAI
-    [SerializeField] private int life;
-    [SerializeField] private GameObject particulaMorte; //Pega a particula de morte do inimigo
-    [SerializeField] private float velocidade; // Velocidade de movimento do inimigo
-    [SerializeField] private float shotVel; // Velocidade do projétil do tiro
+    [SerializeField] protected int life;
+    [SerializeField] protected GameObject particulaMorte; //Pega a particula de morte do inimigo
+    [SerializeField] protected float velocidade; // Velocidade de movimento do inimigo
+    [SerializeField] protected float shotVel; // Velocidade do projétil do tiro
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,8 +17,7 @@ public class EnemyFather : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //USA OS MÉTODOS
-        DeathEnemy();
+
     }
 
 

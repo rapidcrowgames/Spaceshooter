@@ -31,7 +31,7 @@ public class ShotController : MonoBehaviour
         if (other.CompareTag("Enemy")) //Colide com os inimigos
         {
             //Acessa o inimigo e tira a QTD de vida escolhida
-            other.GetComponent<Enemie01Controller>().perdeVida(2);
+            other.GetComponent<EnemyFather>().perdeVida(2);
 
             //Crio na minha posição a animação da particula do tiro e 1.5 segundos depois ela se destrói
             GameObject shotParty = Instantiate(particulaTiro, transform.position, Quaternion.identity);

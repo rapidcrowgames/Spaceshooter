@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         /// USA OS MÉTODOS
         /// </summary>
 
-        perdeVida(); //Método de morrer
+        PerdeVida(); //Método de morrer
 
         Debug.Log(life);
     }
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //MÉTODO de perder vida
-    private void perdeVida()
+    private void PerdeVida()
     {
         //SE minha vida chegar a 0 ou menos, eu morro
         if (life <= 0)

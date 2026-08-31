@@ -42,7 +42,7 @@ public class EnemyFather : MonoBehaviour
     }
 
     //Método de perder vida
-    public void perdeVida(int value)
+    public void PerdeVida(int value)
     {
         //SE o tiro do player me acertar eu perco um determinado valor de vida
         life -= value;

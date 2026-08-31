@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy02Controller : EnemyFather
@@ -11,7 +12,7 @@ public class Enemy02Controller : EnemyFather
     [SerializeField] private Transform tiroPosition; //Pego a posição de onde o tiro deve sair
 
     //Variáveis do tiro
-    [SerializeField] private float shotTime = 0f; // Tempo para atirar
+    [SerializeField] private float shotTime = 0.5f; // Tempo para atirar
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,6 +29,8 @@ public class Enemy02Controller : EnemyFather
     {
         //Usa os métodos do pai
         DeathEnemy(); //Método de morrer
+
+        Enemy2Shot(); //Método de atirar
     }
 
 
@@ -50,14 +53,23 @@ public class Enemy02Controller : EnemyFather
             //Cria a instancia do tiro em uma variável
             GameObject novoTiro = Instantiate(tiroInimigo, tiroPosition.position, Quaternion.identity);
 
+            //Pego o player na cena 
+            var player = FindAnyObjectByType<PlayerController>();
+
+            //Pego a direção
+            Vector2 direction = player.transform.position - novoTiro.transform.position;
+
             //Pego o RB do tiro
             Rigidbody2D tiroRB = novoTiro.GetComponent<Rigidbody2D>();
 
-            //Aplico velocidade ao tiro para ir para baixo
-            tiroRB.linearVelocity = new Vector2(0f, -shotVel);
+            //Normalizando a velocidade do tiro
+            direction.Normalize();
+
+            //Aplico velocidade ao tiro para ir em direção ao player
+            tiroRB.linearVelocity = direction * shotVel;
 
             //Dou um tempo aleatório para o intervalo do tiro
-            shotTime
+            shotTime = UnityEngine.Random.Range(1.2f, 2f);
         }
     }
 }

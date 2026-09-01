@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5583bbe5e08bea4b955a89800c9b575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  life: 5
+  life: 3
   meuRB: {fileID: 0}
   tiro: {fileID: 2944748556789584560, guid: 12c12185ed7ea474184ca771f492ec48, type: 3}
   particulaMorte: {fileID: 8311986738848114817, guid: dfc4d829df12be04d9f6f83c7e6954b1, type: 3}

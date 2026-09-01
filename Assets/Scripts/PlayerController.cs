@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private float vel = 7f;
 
     //Variáveis de vida
-    [SerializeField] private int life = 5;
+    [SerializeField] private int life = 3;
 
     //Variáveis para pegar componentes do Player
     [SerializeField] private Rigidbody2D meuRB;
@@ -40,8 +40,6 @@ public class PlayerController : MonoBehaviour
         /// </summary>
 
         PerdeVida(); //Método de morrer
-
-        Debug.Log(life);
     }
 
     ///<summary>

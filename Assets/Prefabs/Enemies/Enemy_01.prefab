@@ -190,12 +190,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemie01Controller
   life: 1
-  meuRB: {fileID: 0}
-  tiroInimigo: {fileID: 8664257818524069899, guid: 91afbbd5adf1de94fa483c70e24bc72a, type: 3}
-  shotPosition: {fileID: 6911447601807838500}
   particulaMorte: {fileID: 8311986738848114817, guid: dfc4d829df12be04d9f6f83c7e6954b1, type: 3}
   velocidade: 1
   shotVel: 4
+  meuRB: {fileID: 0}
+  tiroInimigo: {fileID: 8664257818524069899, guid: 91afbbd5adf1de94fa483c70e24bc72a, type: 3}
+  shotPosition: {fileID: 6911447601807838500}
   shotTimer: 0.9
 --- !u!58 &1718760502188326494
 CircleCollider2D:
@@ -227,7 +227,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

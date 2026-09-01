@@ -47,4 +47,14 @@ public class EnemyFather : MonoBehaviour
         //SE o tiro do player me acertar eu perco um determinado valor de vida
         life -= value;
     }
+
+    //SE eu colidir com o destruidor, eu morro
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Destruidor"))
+        {
+            //Me destruo
+            Destroy(gameObject, 0.5f);
+        }
+    }
 }

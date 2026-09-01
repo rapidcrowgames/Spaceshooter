@@ -42,8 +42,6 @@ public class Enemie01Controller : EnemyFather
         //Pegando a visibilidade dos filhos do Inimigo
         bool enemyVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
 
-        Debug.Log(enemyVisible);
-
         //Diminuo o timer se ele ainda não for zero
         if (shotTimer > 0) shotTimer -= Time.deltaTime;
 
@@ -61,20 +59,6 @@ public class Enemie01Controller : EnemyFather
 
             //Reinicio o timer de forma aleatória
             shotTimer = Random.Range(0.8f, 1.8f);
-        }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="other"></param>
-
-    //Colisor para se destruir com o DESTRUIDOR
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Destruidor"))
-        {
-            Destroy(gameObject); //Destruo eu mesmo
         }
     }
 

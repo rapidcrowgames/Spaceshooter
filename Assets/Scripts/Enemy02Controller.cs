@@ -23,6 +23,9 @@ public class Enemy02Controller : EnemyFather
     {
         //Pegando meu RigidBody 2D
         meuRB = GetComponent<Rigidbody2D>();
+
+        //Dando Velocidade ao meu Rigid para ele ir para baixo ao iniciar o game
+        meuRB.linearVelocity = new Vector2(0f, -velocidade);
     }
 
     // Update is called once per frame
@@ -95,9 +98,6 @@ public class Enemy02Controller : EnemyFather
         //Descobre se o inimigo chegou mais ou menos no meio da tela
         if (transform.position.y <= 2.15f)
         {
-            //Paro de me mover para baixo
-            meuRB.linearVelocity = new Vector2(0f, 0f);
-
             //SE cheguei, então eu verifico de qual lado estou (ESQUERDA ou DIREITA)
             if (transform.position.x < 0f && !sideChoice)
             {
@@ -106,6 +106,9 @@ public class Enemy02Controller : EnemyFather
 
                 //Já escolhi um lado
                 sideChoice = true;
+
+                //Paro de me mover para baixo
+                meuRB.linearVelocity = new Vector2(0f, 0f);
             }
             else if (transform.position.x >= 0f && !sideChoice)
             {
@@ -114,27 +117,23 @@ public class Enemy02Controller : EnemyFather
 
                 //Já escolhi um lado
                 sideChoice = true;
+
+                //Paro de me mover para baixo
+                meuRB.linearVelocity = new Vector2(0f, 0f);
             }
 
             //SE estou na esquerda
             if (side == 0 && sideChoice)
             {
                 //Me movo para direita
-                meuRB.linearVelocity = new Vector2(velocidade, 0f);
+                meuRB.linearVelocity = new Vector2(velocidade, -velocidade);
             }
             else if (side == 1 && sideChoice) //SE estou na direita
             {
                 //Me movo para esquerda
-                meuRB.linearVelocity = new Vector2(-velocidade, 0f);
+                meuRB.linearVelocity = new Vector2(-velocidade, -velocidade);
             }
 
-        }
-        else
-        {
-            //Enquanto não chegar no meio da tela, eu me movo para baixo
-            
-            //Dando Velocidade ao meu Rigid
-            meuRB.linearVelocity = new Vector2(0f, -velocidade);
         }
     }
 }

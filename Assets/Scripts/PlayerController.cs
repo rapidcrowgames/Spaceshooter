@@ -85,6 +85,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Evento de colisão com inimigo
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        //SE eu colidir com inimigos eu perco vida
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            life--;
+        }
+    }
+
     //MÉTODO de perder vida
     private void PerdeVida()
     {

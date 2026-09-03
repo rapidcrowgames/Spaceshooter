@@ -73,12 +73,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy02Controller
   life: 2
   particulaMorte: {fileID: 8311986738848114817, guid: dfc4d829df12be04d9f6f83c7e6954b1, type: 3}
-  velocidade: 1.2
+  velocidade: 2
   shotVel: 3
   meuRB: {fileID: 0}
   tiroInimigo: {fileID: 5160738498116447968, guid: ca69676cbf78be840b02a973f4f4a50b, type: 3}
   tiroPosition: {fileID: 7347094711850546210}
   shotTime: 1
+  side: 0
 --- !u!58 &5411852312308904060
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -109,7 +110,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -141,7 +142,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &4701655752778419709
 GameObject:
   m_ObjectHideFlags: 0

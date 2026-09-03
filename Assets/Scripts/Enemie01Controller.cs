@@ -62,4 +62,16 @@ public class Enemie01Controller : EnemyFather
         }
     }
 
+    //EVENTO DE COLISÃO
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        //SE eu colidir com o player, minha vida vai para zero e eu tiro vida do player
+        if (other.gameObject.CompareTag("Jogador"))
+        {
+            life = 0;
+
+            //O player perder vida, está no código do player quando ele colidir com "Enemy"
+        }
+    }
+
 }

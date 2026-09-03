@@ -223,7 +223,8 @@ MonoBehaviour:
   inimigos:
   - {fileID: 8908252269462520137, guid: e1563c38c72f53a44908516555138ac1, type: 3}
   - {fileID: 1318946224530057695, guid: fcba2fd626f7aa74d8a1502bdd733705, type: 3}
-  waitTime: 5
+  level: 1
+  waitTime: 10
   xMax: 7
   xMin: -7
   yMin: 6

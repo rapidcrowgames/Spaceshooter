@@ -28,6 +28,9 @@ public class EnemyFather : MonoBehaviour
     //Método de morte
     public void DeathEnemy()
     {
+        //Variável para descobrir se estou visivel
+        bool visivel = GetComponentInChildren<SpriteRenderer>().isVisible;
+
         //SE minha vida chegar a 0 ou menor, eu me destruo / morro
         if (life <= 0)
         {
@@ -45,7 +48,11 @@ public class EnemyFather : MonoBehaviour
     public void PerdeVida(int value)
     {
         //SE o tiro do player me acertar eu perco um determinado valor de vida
-        life -= value;
+        //SE eu estiver na tela
+        if (transform.position.y < 4.7f)
+        {
+            life -= value;
+        }
     }
 
     //SE eu colidir com o destruidor, eu morro

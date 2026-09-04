@@ -16,9 +16,10 @@ public class GameController : MonoBehaviour
     private Vector2 spawnPosition; //Variável que contem os eixos X e Y
     [SerializeField] private float xMax = -7f; //Variável que define o valor minimo do nascimento do inimigo no eixo X
     [SerializeField] private float xMin = 7f; //Variável que define o valor máximo do nascimento do inimigo no eixo X
-    [SerializeField] private float yMin = 6f; //Variável que define o valor máximo do nascimento do inimigo no eixo Y
+    [SerializeField] private float yMin = 8f; //Variável que define o valor máximo do nascimento do inimigo no eixo Y
     [SerializeField] private float yMax = 10f; //Variável que define o valor máximo do nascimento do inimigo no eixo Y
     private int arrayInd = 0; //Variável que cuida do indice do array dos inimigos : MÉTODO WaveCreate()
+    [SerializeField] private int qtdInimigos = 0; //Variável que controla quantos inimigos já foram criados na WAVE
 
     //Variáveis de TEXTO
     [SerializeField] private TextMeshProUGUI textoPontos; //Pega o texto que exibe a pontuação
@@ -61,7 +62,6 @@ public class GameController : MonoBehaviour
         {
             //Variáveis do laço
             int inimigosCriados = level * 4; //Cria 4 inimigos de acordo com level: [SE for level 2 cria 8, se for level 3 cria 12 e etc.]
-            int qtdInimigos = 0; //Variável que controla quantos inimigos já foram criados na WAVE
 
             //Laço de repetição para criar uma QTD de inimigos por vez
             while (qtdInimigos < inimigosCriados)
@@ -90,10 +90,20 @@ public class GameController : MonoBehaviour
                 //Aumenta a QTD de inimigos mortos
                 qtdInimigos++;
 
-                //Reseta o timer
-                createTimeEnemies = waitTime;
+                //Reseta o timer SE todos inimigos já morreram
+                if (qtdInimigos <= 0)
+                {
+                    createTimeEnemies = waitTime;
+                }
             }
         }
+    }
+
+    //Método de verificar se o inimigo já morreu
+    public void EnemieQTD()
+    {
+        //Diminui a quantidade de inimigos criados, que morreram
+        qtdInimigos--;
     }
 
     //Método de ganhar pontos
@@ -110,8 +120,8 @@ public class GameController : MonoBehaviour
         //Ganho pontos
         this.pontos += pontos;
 
-        //SE meu pontos forem aumentando de 100 em 100, eu subo de level
-        level = (this.pontos / 100) + 1;
+        //SE meu pontos forem aumentando de 200 em 200, eu subo de level
+        level = (this.pontos / 200) + 1;
 
         //Exibe o texto dos pontos de acordo com os pontos atuais
         textoPontos.text = Mathf.Round(this.pontos).ToString();
@@ -120,6 +130,6 @@ public class GameController : MonoBehaviour
         textoLevel.text = Mathf.Round(level).ToString();
 
         //Aumenta o tempo de espera a cada level que passa
-        waitTime = level * 8f; 
+        //waitTime = level * 8f;
     }
 }

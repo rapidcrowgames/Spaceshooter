@@ -7,6 +7,7 @@ public class EnemyFather : MonoBehaviour
     [SerializeField] protected GameObject particulaMorte; //Pega a particula de morte do inimigo
     [SerializeField] protected float velocidade; // Velocidade de movimento do inimigo
     [SerializeField] protected float shotVel; // Velocidade do projétil do tiro
+    [SerializeField] protected int pontos; //Variável que cuida quantos pontos cada inimigo dará ao player
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,7 +42,10 @@ public class EnemyFather : MonoBehaviour
             Destroy(deathParty, 1f);
 
             //Quando eu morrer, o jogador ganha pontos
-            FindFirstObjectByType<GameController>().GanhaPontos(10);
+            var GameController = FindFirstObjectByType<GameController>();
+
+            GameController.EnemieQTD(); //Diminui a quantidade de inimigos criados
+            GameController.GanhaPontos(pontos); //Acessa e da pontos ao jogador
 
             Destroy(gameObject);
         }
@@ -63,8 +67,8 @@ public class EnemyFather : MonoBehaviour
     {
         if (other.CompareTag("Destruidor"))
         {
-            //Me destruo
-            Destroy(gameObject, 0.5f);
+            //Eu morro
+            life = 0;
         }
     }
 }

@@ -58,7 +58,7 @@ public class Enemie01Controller : EnemyFather
             rbTiro.linearVelocity = new Vector2(0f, -shotVel);
 
             //Reinicio o timer de forma aleatória
-            shotTimer = Random.Range(1.1f, 2.5f);
+            shotTimer = Random.Range(1.5f, 2.5f);
         }
     }
 

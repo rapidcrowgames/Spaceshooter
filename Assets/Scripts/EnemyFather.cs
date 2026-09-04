@@ -40,6 +40,9 @@ public class EnemyFather : MonoBehaviour
             //Depois de 1f segundos eu me destruo
             Destroy(deathParty, 1f);
 
+            //Quando eu morrer, o jogador ganha pontos
+            FindFirstObjectByType<GameController>().GanhaPontos(10);
+
             Destroy(gameObject);
         }
     }

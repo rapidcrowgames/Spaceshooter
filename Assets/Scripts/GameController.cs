@@ -8,10 +8,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject[] inimigos = { }; //Array que pega os inimigos do jogo
 
     //Variáveis de cena
-    private int pontos = 0; //Pontos do jogo
+    [SerializeField] private int pontos = 0; //Pontos do jogo
     [SerializeField] private int level = 1; //Level do jogo
     private float createTimeEnemies = 0f; //Tempo inicial para criar os inimigos
-    [SerializeField] private float waitTime = 10f; //Tempo de espera para criar os inimigos
+    [SerializeField] private float waitTime = 8f; //Tempo de espera para criar os inimigos
     private Vector2 spawnPosition; //Variável que contem os eixos X e Y
     [SerializeField] private float xMax = -7f; //Variável que define o valor minimo do nascimento do inimigo no eixo X
     [SerializeField] private float xMin = 7f; //Variável que define o valor máximo do nascimento do inimigo no eixo X
@@ -89,5 +89,15 @@ public class GameController : MonoBehaviour
                 createTimeEnemies = waitTime;
             }
         }
+    }
+
+    //Método de ganhar pontos
+    public void GanhaPontos(int pontos)
+    {
+        //Ganho pontos
+        this.pontos += pontos;
+
+        //SE meu pontos forem aumentando de 100 em 100, eu subo de level
+        level = (this.pontos / 100) + 1;
     }
 }

@@ -54,11 +54,13 @@ public class GameController : MonoBehaviour
          * DE ACORDO COM O NÍVEL DA PARTIDA
         */
 
+        Debug.Log(createTimeEnemies);
+
         //SE o timer ainda não for 0, ele diminui o tempo do timer
         if (createTimeEnemies > 0) createTimeEnemies -= Time.deltaTime;
 
         //SE o timer chegou em 0, ele cria novos inimigos
-        if (createTimeEnemies <= 0)
+        if (createTimeEnemies <= 0 && qtdInimigos <= 0)
         {
             //Variáveis do laço
             int inimigosCriados = level * 4; //Cria 4 inimigos de acordo com level: [SE for level 2 cria 8, se for level 3 cria 12 e etc.]
@@ -89,12 +91,6 @@ public class GameController : MonoBehaviour
 
                 //Aumenta a QTD de inimigos mortos
                 qtdInimigos++;
-
-                //Reseta o timer SE todos inimigos já morreram
-                if (qtdInimigos <= 0)
-                {
-                    createTimeEnemies = waitTime;
-                }
             }
         }
     }
@@ -104,6 +100,12 @@ public class GameController : MonoBehaviour
     {
         //Diminui a quantidade de inimigos criados, que morreram
         qtdInimigos--;
+
+        //Reseta o timer SE todos inimigos já morreram
+        if (qtdInimigos <= 0)
+        {
+            createTimeEnemies = waitTime;
+        }
     }
 
     //Método de ganhar pontos

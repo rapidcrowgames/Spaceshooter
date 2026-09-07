@@ -192,9 +192,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   life: 3
   meuRB: {fileID: 0}
-  tiro: {fileID: 2944748556789584560, guid: 12c12185ed7ea474184ca771f492ec48, type: 3}
+  tiro: {fileID: 0}
+  tiro2: {fileID: 0}
   particulaMorte: {fileID: 8311986738848114817, guid: dfc4d829df12be04d9f6f83c7e6954b1, type: 3}
   shotPosition: {fileID: 363684993637861284}
+  levelShot: 1
+  xMin: -8.3
+  xMax: 8.3
+  yMin: -4.3
+  yMax: 4.3
 --- !u!114 &5057440598235633733
 MonoBehaviour:
   m_ObjectHideFlags: 0

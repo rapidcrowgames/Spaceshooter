@@ -18,11 +18,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D meuRB;
 
     //Variáveis para pegar objetos do jogo
-    [SerializeField] private GameObject tiro; //Pega o objeto tiro
+    [SerializeField] private GameObject[] tiro = { }; //Pega o array de tipos de tiros do player
 
     [SerializeField] private GameObject particulaMorte; //Pega a particula da minha morte
 
     [SerializeField] private Transform shotPosition; //Pega a posição de onde será criado o tiro
+
+    //Variáveis dos tipos de tiro e level do tiro
+    [SerializeField] private int levelShot = 0; //Level do tiro do player
 
 
     //Variáveis de espaço na cena
@@ -78,14 +81,14 @@ public class PlayerController : MonoBehaviour
         if (value.isPressed)
         {
             //Crio a instancia do tiro, no meu X e meu Y definido no paínel do Unity
-            GameObject novoTiro = Instantiate(tiro, shotPosition.position, Quaternion.identity);
+            GameObject novoTiro = Instantiate(tiro[levelShot], shotPosition.position, Quaternion.identity);
 
             //Pega o rigidbody do tiro e coloca em uma nova variável
             Rigidbody2D rbTiro = novoTiro.GetComponent<Rigidbody2D>();
 
             //Faz ele ir para cima
             rbTiro.linearVelocity = Vector2.up * vel;
-            
+
         }
     }
 
@@ -126,5 +129,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    //MÉTODO de mudar de tiro
+    public void ChangeShot(int numberShot)
+    {
+        levelShot = numberShot;
+    }
 }

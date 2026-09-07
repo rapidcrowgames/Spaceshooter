@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class ShotController : ShotFather
+public class PlayerShotType2 : ShotFather
 {
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

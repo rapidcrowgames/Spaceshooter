@@ -48,6 +48,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Colect
+    uniqueID: 692533729
+    locked: 0
   - name: Inimigos
     uniqueID: 1478376673
     locked: 0
@@ -56,9 +59,6 @@ TagManager:
     locked: 0
   - name: Tiros
     uniqueID: 2288424379
-    locked: 0
-  - name: Colect
-    uniqueID: 692533729
     locked: 0
   m_RenderingLayers:
   - Default

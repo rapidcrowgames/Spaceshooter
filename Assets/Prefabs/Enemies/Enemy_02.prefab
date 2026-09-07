@@ -76,6 +76,7 @@ MonoBehaviour:
   velocidade: 2
   shotVel: 3
   pontos: 20
+  powerUp: {fileID: 8456432970777975692, guid: dd0b0d83b628a3a478a707c2b46b03aa, type: 3}
   meuRB: {fileID: 0}
   tiroInimigo: {fileID: 5160738498116447968, guid: ca69676cbf78be840b02a973f4f4a50b, type: 3}
   tiroPosition: {fileID: 7347094711850546210}

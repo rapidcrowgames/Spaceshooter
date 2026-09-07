@@ -175,8 +175,15 @@ public class PlayerController : MonoBehaviour
     }
 
     //MÉTODO de mudar de tiro
-    public void ChangeShot(int numberShot)
+    public void ChangeShot()
     {
-        levelShot = numberShot;
+        //SÓ aumenta o nível se ainda não cheguei no level máximo
+        if (levelShot < 2) levelShot++;
+    }
+
+    //MÉTODO de pegar a variável LevelShot e deixa-la publica
+    public int GetLevelShot()
+    {
+        return levelShot;
     }
 }

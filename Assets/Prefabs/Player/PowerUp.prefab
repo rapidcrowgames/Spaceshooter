@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 692533729
-  m_SortingLayer: 4
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2092725686814760822, guid: 543487074374e31408455a92604fdf45, type: 3}
@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 7455999534854300906}
   - component: {fileID: 7441197345597265360}
   - component: {fileID: 6184387020487717983}
+  - component: {fileID: 1404460515063780215}
   m_Layer: 10
   m_Name: PowerUp
   m_TagString: colect
@@ -211,3 +212,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1404460515063780215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8456432970777975692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7697a21d9dce1da4d9a5a876c53671bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUp
+  meuRB: {fileID: 0}

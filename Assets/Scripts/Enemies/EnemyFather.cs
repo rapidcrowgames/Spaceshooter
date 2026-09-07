@@ -9,6 +9,8 @@ public class EnemyFather : MonoBehaviour
     [SerializeField] protected float shotVel; // Velocidade do projétil do tiro
     [SerializeField] protected int pontos; //Variável que cuida quantos pontos cada inimigo dará ao player
 
+    [SerializeField] protected GameObject powerUp; //Pega o objeto power up
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,6 +48,19 @@ public class EnemyFather : MonoBehaviour
 
             GameController.EnemieQTD(); //Diminui a quantidade de inimigos criados
             GameController.GanhaPontos(pontos); //Acessa e da pontos ao jogador
+
+            //Gera uma chance de criar o power up
+            int chance = UnityEngine.Random.Range(0, 10);
+
+            //Pega o player dentro deste escopo
+            var player = FindFirstObjectByType<PlayerController>();
+
+            //SE a chance for maior que 7 ele cria o poder e SE o player ainda não chegou no poder máximo
+            if (chance > 7 && player.GetLevelShot() < 2)
+            {
+                //Cria o power up na minha instância do inimigo
+                Instantiate(powerUp, transform.position, Quaternion.identity);
+            }
 
             Destroy(gameObject);
         }

@@ -835,13 +835,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2262598416611888355, guid: 023e5082b2f5b1a48b9f2cbc1a0547fa, type: 3}
+      propertyPath: xMax
+      value: 8.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262598416611888355, guid: 023e5082b2f5b1a48b9f2cbc1a0547fa, type: 3}
+      propertyPath: xMin
+      value: -8.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262598416611888355, guid: 023e5082b2f5b1a48b9f2cbc1a0547fa, type: 3}
+      propertyPath: yMax
+      value: 4.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262598416611888355, guid: 023e5082b2f5b1a48b9f2cbc1a0547fa, type: 3}
+      propertyPath: yMin
+      value: -4.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2638318099301491432, guid: 023e5082b2f5b1a48b9f2cbc1a0547fa, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5247399439400241929, guid: 023e5082b2f5b1a48b9f2cbc1a0547fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5247399439400241929, guid: 023e5082b2f5b1a48b9f2cbc1a0547fa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -895,6 +911,18 @@ PrefabInstance:
     - target: {fileID: 1396878444820305611, guid: 16ece695ed9dcff4fb04bd79b2be4be3, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381633461181195639, guid: 16ece695ed9dcff4fb04bd79b2be4be3, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.03773582
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381633461181195639, guid: 16ece695ed9dcff4fb04bd79b2be4be3, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.035948183
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381633461181195639, guid: 16ece695ed9dcff4fb04bd79b2be4be3, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.035065833
       objectReference: {fileID: 0}
     - target: {fileID: 9147050103906145357, guid: 16ece695ed9dcff4fb04bd79b2be4be3, type: 3}
       propertyPath: m_LocalPosition.x

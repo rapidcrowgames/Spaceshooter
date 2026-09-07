@@ -24,6 +24,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform shotPosition; //Pega a posição de onde será criado o tiro
 
+
+    //Variáveis de espaço na cena
+    [SerializeField] private float xMin; //Limite MIN do X
+    [SerializeField] private float xMax; //Limite MAX do X
+    [SerializeField] private float yMin; //Limite MIN do Y
+    [SerializeField] private float yMax; //Limite MAX do Y
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,6 +62,13 @@ public class PlayerController : MonoBehaviour
 
         //Aplicando esse movimento no meu RB
         meuRB.linearVelocity = movimento * vel;
+
+        //Limitando os meus limites na tela
+        float meuX = Mathf.Clamp(transform.position.x ,xMin, xMax);
+        float meuY = Mathf.Clamp(transform.position.y ,yMin, yMax);
+
+        //Passando para meu X e Y os meus limites
+        transform.position = new Vector3(meuX, meuY, transform.position.z);
 
     }
 

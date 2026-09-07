@@ -225,3 +225,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp
   meuRB: {fileID: 0}
+  destroyAnim: {fileID: 13925018866652234, guid: d3cc0abb5abb8d04f83d348332c4a84b, type: 3}

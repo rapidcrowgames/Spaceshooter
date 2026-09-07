@@ -22,7 +22,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject particulaMorte; //Pega a particula da minha morte
 
+    //Variáveis das posições dos tiros
     [SerializeField] private Transform shotPosition; //Pega a posição de onde será criado o tiro
+    [SerializeField] private Transform shotPositionLeft; //Pega o lado esquerdo da asa para criar o tiro
+    [SerializeField] private Transform shotPositionRight; //Pega o lado direito da asa para criar o tiro
 
     //Variáveis dos tipos de tiro e level do tiro
     [SerializeField] private int levelShot = 0; //Level do tiro do player
@@ -77,11 +80,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnShot(InputValue value) //Pega o input para atirar
     {
-        //SE o botão de atirar foi pressionado
-        if (value.isPressed)
+        //Criando as variáveis dos tiros
+        GameObject novoTiro; //Central
+        GameObject novoTiroDir; //Direita
+        GameObject novoTiroEsq; //Esquerda
+
+        //SE o botão de atirar foi pressionado e o nível do tiro for 0 (Cria o primeiro tiro no centro)
+        if (value.isPressed && levelShot == 0)
         {
+            //CRIA O TIRO TIPO 1 CENTRALIZADO NO PLAYER
+
             //Crio a instancia do tiro, no meu X e meu Y definido no paínel do Unity
-            GameObject novoTiro = Instantiate(tiro[levelShot], shotPosition.position, Quaternion.identity);
+            novoTiro = Instantiate(tiro[0], shotPosition.position, Quaternion.identity);
 
             //Pega o rigidbody do tiro e coloca em uma nova variável
             Rigidbody2D rbTiro = novoTiro.GetComponent<Rigidbody2D>();
@@ -89,6 +99,41 @@ public class PlayerController : MonoBehaviour
             //Faz ele ir para cima
             rbTiro.linearVelocity = Vector2.up * vel;
 
+        }
+
+        //SE o LevelShot for 1 ele cria o Tiro tipo 2 nas laterais do player.
+        if (value.isPressed && levelShot == 1)
+        {
+            //Cria a instancia do tiro, nas laterais e não no centro
+            novoTiroEsq = Instantiate(tiro[1], shotPositionLeft.position, Quaternion.identity);
+            novoTiroDir = Instantiate(tiro[1], shotPositionRight.position, Quaternion.identity);
+
+            //Pega o RigidBody do tiro
+            Rigidbody2D rbTiroEsq = novoTiroEsq.GetComponent<Rigidbody2D>();
+            Rigidbody2D rbTiroDir = novoTiroDir.GetComponent<Rigidbody2D>();
+
+            //Aplica a velocidade
+            rbTiroEsq.linearVelocity = Vector2.up * vel;
+            rbTiroDir.linearVelocity = Vector2.up * vel;
+        }
+
+        //SE o LevelShot for 1 ele cria o Tiro tipo 3 nas laterais do player e no centro.
+        if (value.isPressed && levelShot >= 2)
+        {
+            //Cria a instancia do tiro, nas laterais e não no centro
+            novoTiroEsq = Instantiate(tiro[2], shotPositionLeft.position, Quaternion.identity);
+            novoTiroDir = Instantiate(tiro[2], shotPositionRight.position, Quaternion.identity);
+            novoTiro    = Instantiate(tiro[2], shotPosition.position, Quaternion.identity);
+
+            //Pega o RigidBody do tiro
+            Rigidbody2D rbTiroEsq = novoTiroEsq.GetComponent<Rigidbody2D>();
+            Rigidbody2D rbTiroDir = novoTiroDir.GetComponent<Rigidbody2D>();
+            Rigidbody2D rbTiro = novoTiro.GetComponent<Rigidbody2D>();
+
+            //Aplica a velocidade
+            rbTiroEsq.linearVelocity = Vector2.up * vel;
+            rbTiroDir.linearVelocity = Vector2.up * vel;
+            rbTiro.linearVelocity = Vector2.up * vel;
         }
     }
 

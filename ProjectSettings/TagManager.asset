@@ -10,6 +10,7 @@ TagManager:
   - Jogador
   - shotPlayer
   - shotEnemy
+  - colect
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Player
   - PlayerShot
   - EnemyShot
-  - 
+  - Colect
   - 
   - 
   - 
@@ -55,6 +56,9 @@ TagManager:
     locked: 0
   - name: Tiros
     uniqueID: 2288424379
+    locked: 0
+  - name: Colect
+    uniqueID: 692533729
     locked: 0
   m_RenderingLayers:
   - Default

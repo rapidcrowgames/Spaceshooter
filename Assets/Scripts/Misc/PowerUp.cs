@@ -19,8 +19,9 @@ public class PowerUp : MonoBehaviour
         //Pego meu RB
         meuRB = GetComponent<Rigidbody2D>();
 
-        //SE eu fui criado, eu começo a me movimentar lentamente para baixo
-        meuRB.linearVelocity = Vector2.down * vel;
+        //SE eu fui criado, eu vou para uma direção aleatória
+        var direction = UnityEngine.Random.Range(-1f, 1f);
+        meuRB.linearVelocity = new Vector2(direction, direction) * vel;
     }
 
     // Update is called once per frame

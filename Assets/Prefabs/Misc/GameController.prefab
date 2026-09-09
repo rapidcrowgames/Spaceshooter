@@ -49,7 +49,7 @@ MonoBehaviour:
   - {fileID: 1318946224530057695, guid: fcba2fd626f7aa74d8a1502bdd733705, type: 3}
   pontos: 0
   level: 1
-  waitTime: 4
+  waitTime: 2
   xMax: 7
   xMin: -7
   yMin: 8

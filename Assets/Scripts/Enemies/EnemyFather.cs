@@ -10,6 +10,7 @@ public class EnemyFather : MonoBehaviour
     [SerializeField] protected int pontos; //Variável que cuida quantos pontos cada inimigo dará ao player
 
     [SerializeField] protected GameObject powerUp; //Pega o objeto power up
+    [SerializeField] protected float enemyChance; //Define no painel uma chance que cada inimigo tem de dropar o power up
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,8 +35,11 @@ public class EnemyFather : MonoBehaviour
         //Variável para descobrir se estou visivel
         bool visivel = GetComponentInChildren<SpriteRenderer>().isVisible;
 
-        //SE minha vida chegar a 0 ou menor, eu me destruo / morro
-        if (life <= 0)
+        //Pega o player dentro deste escopo
+        var player = FindFirstObjectByType<PlayerController>();
+
+        //SE minha vida chegar a 0 ou menor, eu me destruo / morro e SE o player existe na cena
+        if (life <= 0 && player)
         {
             //Crio a particula da morte
             GameObject deathParty = Instantiate(particulaMorte, transform.position, Quaternion.identity);
@@ -50,13 +54,10 @@ public class EnemyFather : MonoBehaviour
             GameController.GanhaPontos(pontos); //Acessa e da pontos ao jogador
 
             //Gera uma chance de criar o power up
-            int chance = UnityEngine.Random.Range(0, 10);
-
-            //Pega o player dentro deste escopo
-            var player = FindFirstObjectByType<PlayerController>();
+            float chance = UnityEngine.Random.Range(0f, 1f);
 
             //SE a chance for maior que 7 ele cria o poder e SE o player ainda não chegou no poder máximo
-            if (chance > 7 && player.GetLevelShot() < 2)
+            if (chance > enemyChance && player.GetLevelShot() < 2)
             {
                 //Cria o power up na minha instância do inimigo
                 Instantiate(powerUp, transform.position, Quaternion.identity);

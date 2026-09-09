@@ -45,6 +45,29 @@ public class GameController : MonoBehaviour
 
     //MÉTODOS
 
+    //MÉTODO de checar se alguém já ocupou o espaço onde o inimigo vai nascer para evitar de nascerem um
+    //em cima do outro
+    private bool PositionCheck(Vector2 position, Vector2 size)
+    {
+        //Cria a checagem em uma variável
+        Collider2D inPosition = Physics2D.OverlapBox(position, size, 0f);
+
+        //SE tem alguém na minha posição então eu ativo uma variável de controle
+        if (inPosition)
+        {
+            //Tem alguém na minha posição
+            Debug.LogError("Collidi");
+            return true;
+            
+        }
+        else
+        {
+            //Não tem ninguém na minha posição
+            Debug.LogError("Não Collidi");
+            return false;
+        }
+    }
+
     //Método do timer para criar inimigos
     private void WaveCreate()
     {
@@ -53,8 +76,6 @@ public class GameController : MonoBehaviour
          * FAZER COM QUE, QUANDO O TIMER ESTEJA EM 0, ELE CRIE NOVOS INIMIGOS
          * DE ACORDO COM O NÍVEL DA PARTIDA
         */
-
-        Debug.Log(createTimeEnemies);
 
         //SE o timer ainda não for 0, ele diminui o tempo do timer
         if (createTimeEnemies > 0) createTimeEnemies -= Time.deltaTime;
@@ -86,8 +107,14 @@ public class GameController : MonoBehaviour
                     arrayInd = 0;
                 }
 
-                //Cria a instancia do inimigo
-                GameObject novoInimigo = Instantiate(inimigos[arrayInd], spawnPosition, Quaternion.identity);
+                //Checa se existe alguém no meu lugar
+                bool colisao = PositionCheck(spawnPosition, inimigos[arrayInd].transform.localScale);
+
+                //Cria a instancia do inimigo SE não tiver ninguém na mesma posição que eu
+                if (!colisao)
+                {
+                    GameObject novoInimigo = Instantiate(inimigos[arrayInd], spawnPosition, Quaternion.identity);
+                }
 
                 //Aumenta a QTD de inimigos mortos
                 qtdInimigos++;

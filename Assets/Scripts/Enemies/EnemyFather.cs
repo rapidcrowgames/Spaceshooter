@@ -78,10 +78,18 @@ public class EnemyFather : MonoBehaviour
         }
     }
 
-    //SE eu colidir com o destruidor, eu morro
+    //SE eu colidir com objetos, eu morro
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //SE eu colidir com a parede destruidora
         if (other.CompareTag("Destruidor"))
+        {
+            //Eu morro
+            life = 0;
+        }
+
+        //SE eu colidir com o escudo do player
+        if (other.CompareTag("Shield"))
         {
             //Eu morro
             life = 0;

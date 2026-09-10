@@ -189,13 +189,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0462bd75d4e2cf47976c79343e2ecbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemie01Controller
-  life: 1
+  life: 2
   particulaMorte: {fileID: 8311986738848114817, guid: dfc4d829df12be04d9f6f83c7e6954b1, type: 3}
   velocidade: 1
   shotVel: 4
   pontos: 10
   powerUp: {fileID: 8456432970777975692, guid: dd0b0d83b628a3a478a707c2b46b03aa, type: 3}
-  enemyChance: 0.8
+  enemyChance: 0.95
   meuRB: {fileID: 0}
   tiroInimigo: {fileID: 8664257818524069899, guid: 91afbbd5adf1de94fa483c70e24bc72a, type: 3}
   shotPosition: {fileID: 6911447601807838500}

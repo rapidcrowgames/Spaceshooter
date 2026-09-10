@@ -56,14 +56,12 @@ public class GameController : MonoBehaviour
         if (inPosition)
         {
             //Tem alguém na minha posição
-            Debug.LogError("Collidi");
             return true;
             
         }
         else
         {
             //Não tem ninguém na minha posição
-            Debug.LogError("Não Collidi");
             return false;
         }
     }
@@ -86,9 +84,20 @@ public class GameController : MonoBehaviour
             //Variáveis do laço
             int inimigosCriados = level * 4; //Cria 4 inimigos de acordo com level: [SE for level 2 cria 8, se for level 3 cria 12 e etc.]
 
+            //Variável que verifica quantas tentativas teve o while para evitar travar o jogo
+            int tentativas = 0;
+
             //Laço de repetição para criar uma QTD de inimigos por vez
             while (qtdInimigos < inimigosCriados)
             {
+                //Aumenta as tentativas
+                tentativas++;
+
+                //SE tentou 200x e não teve sucesso ele sai do laço
+                if (tentativas > 200)
+                {
+                    break; //Sai do laço
+                }
 
                 //Escolhe uma posição no eixo X e Y para o inimigo nascer
                 spawnPosition.x = UnityEngine.Random.Range(xMin, xMax);
@@ -111,10 +120,13 @@ public class GameController : MonoBehaviour
                 bool colisao = PositionCheck(spawnPosition, inimigos[arrayInd].transform.localScale);
 
                 //Cria a instancia do inimigo SE não tiver ninguém na mesma posição que eu
-                if (!colisao)
+                if (colisao)
                 {
-                    GameObject novoInimigo = Instantiate(inimigos[arrayInd], spawnPosition, Quaternion.identity);
+                    continue; //SE ele colidir com alguém, ele continua o método
                 }
+                
+                GameObject novoInimigo = Instantiate(inimigos[arrayInd], spawnPosition, Quaternion.identity);
+                
 
                 //Aumenta a QTD de inimigos mortos
                 qtdInimigos++;

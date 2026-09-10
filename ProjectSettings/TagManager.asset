@@ -11,6 +11,7 @@ TagManager:
   - shotPlayer
   - shotEnemy
   - colect
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - PlayerShot
   - EnemyShot
   - Colect
-  - 
+  - Shield
   - 
   - 
   - 
@@ -56,6 +57,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 4104708023
+    locked: 0
+  - name: Shield
+    uniqueID: 2007551695
     locked: 0
   - name: Tiros
     uniqueID: 2288424379

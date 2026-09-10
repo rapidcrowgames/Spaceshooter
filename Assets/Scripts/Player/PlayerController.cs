@@ -137,6 +137,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnShield(InputValue value) //Pega o input do escudo
+    {
+        //SE apertar a tecla do escudo
+        if (value.isPressed)
+        {
+            //Ele cria o escudo na minha posição
+
+        }
+    }
+
     //Evento de colisão com o tiro do inimigo
     private void OnTriggerEnter2D(Collider2D other)
     {

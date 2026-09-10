@@ -19,13 +19,21 @@ public class PlayerController : MonoBehaviour
 
     //Variáveis para pegar objetos do jogo
     [SerializeField] private GameObject[] tiro = { }; //Pega o array de tipos de tiros do player
-
     [SerializeField] private GameObject particulaMorte; //Pega a particula da minha morte
+    [SerializeField] private GameObject shield; //Pega o escudo do player
 
     //Variáveis das posições dos tiros
     [SerializeField] private Transform shotPosition; //Pega a posição de onde será criado o tiro
     [SerializeField] private Transform shotPositionLeft; //Pega o lado esquerdo da asa para criar o tiro
     [SerializeField] private Transform shotPositionRight; //Pega o lado direito da asa para criar o tiro
+
+    //Pega a posição do escudo e atualiza ela o tempo todo e OUTRAS variáveis do escudo também
+    private bool shieldOn = false; //Booleana para dizer se o escudo está ativado ou não
+    [SerializeField] private Transform shieldTrans; //Variável que guarda a posição do escudo
+    private GameObject aShield; //Variável da instância do escudo
+    [SerializeField] private int shieldQTD = 3; //Quantidade de escudos que o player tem inicialmente
+    [SerializeField] private float shieldTime = 3f; //Dura 3 segundos
+
 
     //Variáveis dos tipos de tiro e level do tiro
     [SerializeField] private int levelShot = 0; //Level do tiro do player
@@ -53,6 +61,7 @@ public class PlayerController : MonoBehaviour
         /// </summary>
 
         PerdeVida(); //Método de morrer
+        ShieldFollow(); //Método de fazer o escudo me seguir
     }
 
     ///<summary>
@@ -139,11 +148,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnShield(InputValue value) //Pega o input do escudo
     {
-        //SE apertar a tecla do escudo
-        if (value.isPressed)
+        //SE apertar a tecla do escudo e TENHO escudos suficientes
+        if (value.isPressed && shieldQTD > 0)
         {
             //Ele cria o escudo na minha posição
+            aShield = Instantiate(shield, transform.position, Quaternion.identity);
 
+            //Indica que o escudo está ativo
+            shieldOn = true;
+
+            //Gasta 1 escudo
+            shieldQTD--;
         }
     }
 
@@ -164,6 +179,34 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             life--;
+        }
+    }
+
+    //MÉTODO de fazer o escudo seguir o player
+    private void ShieldFollow()
+    {
+        Debug.Log(shieldQTD);
+
+        //Verifica se o escudo está realmente ativo
+        if (shieldOn)
+        {
+            //SE sim o transform do escudo o transform do escudo é o mesmo que o meu
+            aShield.transform.position = transform.position;
+        }
+
+        //Faz gastar o tempo de uso do escudo
+        if (shieldTime > 0 && shieldOn) shieldTime -= Time.deltaTime;
+
+        //SE o timer chegar a 0, ele não está mais usando o escudo
+        if (shieldTime <= 0)
+        {
+            //Destroy a instancia do escudo
+            Destroy(aShield);
+
+            shieldOn = false;
+
+            //Reseta o timer
+            shieldTime = 3f;
         }
     }
 

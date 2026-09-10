@@ -199,7 +199,7 @@ MonoBehaviour:
   meuRB: {fileID: 0}
   tiroInimigo: {fileID: 8664257818524069899, guid: 91afbbd5adf1de94fa483c70e24bc72a, type: 3}
   shotPosition: {fileID: 6911447601807838500}
-  shotTimer: 0.9
+  shotTimer: 1.3
 --- !u!58 &1718760502188326494
 CircleCollider2D:
   m_ObjectHideFlags: 0

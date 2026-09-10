@@ -38,5 +38,18 @@ public class Enemie01ShotController : MonoBehaviour
             //Me destruo
             Destroy(gameObject); 
         }
+
+        //SE eu colidir com o escudo
+        if (other.CompareTag("Shield"))
+        {
+            //Crio a animação do impacto do tiro
+            GameObject shotParty = Instantiate(particulaTiro, transform.position, Quaternion.identity);
+
+            //Destruo a particula do tiro depois de 1f segundo
+            Destroy(shotParty, 1f);
+
+            //Me destruo
+            Destroy(gameObject); 
+        }
     }
 }

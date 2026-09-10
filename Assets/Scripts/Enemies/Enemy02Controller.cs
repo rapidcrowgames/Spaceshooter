@@ -81,7 +81,7 @@ public class Enemy02Controller : EnemyFather
             novoTiro.transform.rotation = Quaternion.Euler(0f, 0f, angulo - 90);
 
             //Dou um tempo aleatório para o intervalo do tiro
-            shotTime = UnityEngine.Random.Range(1.6f, 2f);
+            shotTime = UnityEngine.Random.Range(3f, 4f);
         }
     }
 

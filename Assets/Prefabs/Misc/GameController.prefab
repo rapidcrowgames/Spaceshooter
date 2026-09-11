@@ -47,6 +47,10 @@ MonoBehaviour:
   inimigos:
   - {fileID: 8908252269462520137, guid: e1563c38c72f53a44908516555138ac1, type: 3}
   - {fileID: 1318946224530057695, guid: fcba2fd626f7aa74d8a1502bdd733705, type: 3}
+  boss: {fileID: 4528126049614300500, guid: 967c14f18dfac2c45be1fb39aff40796, type: 3}
+  bossAnim: {fileID: 1182629021049357163, guid: 915d30e582573e14d92304c2920cd5b7, type: 3}
+  createBossAnimPosition: {fileID: 0}
+  createBossPosition: {fileID: 0}
   pontos: 0
   level: 1
   waitTime: 2

@@ -81,12 +81,28 @@ public class BossController : EnemyFather
          */
 
         //Escolhe aleatóriamente para qual lado ele sai primeiro
-        var side = UnityEngine.Random.Range(-2f, 2f);
+        var side = Random.Range(0, 2) == 0 ? -2f : 2f;
 
         //Faz o boss se mover para direita e esquerda SE ainda não escolhi uma direção
-        meuRB.linearVelocity = new Vector2(side, 0f) * velocidade;
+        if (!sideChoice)
+        {
+            meuRB.linearVelocity = new Vector2(side, 0f) * velocidade;
 
-        //SE ele bater na parede do lado direito ele muda a direção
+            //Já escolhi um lado
+            sideChoice = true;
+        }
+
+        //SE ele bater na parede do lado ESQUERDO ele muda a direção
+        if (transform.position.x <= -5.8f)
+        {
+            //Vou para a direita
+            meuRB.linearVelocity = new Vector2(2f, 0f) * velocidade;
+        }
+        else if (transform.position.x >= 5.8f) //SE ele bater do lado DIREITO 
+        {
+            //Vou para a esquerda
+            meuRB.linearVelocity = new Vector2(-2f, 0f) * velocidade;
+        }
     }
 
     private void State02() //Estado 2 do BOSS

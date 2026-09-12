@@ -51,8 +51,8 @@ MonoBehaviour:
   bossAnim: {fileID: 1182629021049357163, guid: 915d30e582573e14d92304c2920cd5b7, type: 3}
   createBossAnimPosition: {fileID: 1696980230702392458, guid: 915d30e582573e14d92304c2920cd5b7, type: 3}
   createBossPosition: {fileID: 6764789192921956571, guid: 967c14f18dfac2c45be1fb39aff40796, type: 3}
-  pontos: 0
-  level: 10
+  pontos: 1700
+  level: 1
   waitTime: 2
   xMax: 7
   xMin: -7

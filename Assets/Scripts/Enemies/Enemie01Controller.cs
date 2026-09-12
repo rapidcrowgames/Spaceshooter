@@ -14,7 +14,7 @@ public class Enemie01Controller : EnemyFather
     [SerializeField] private Transform shotPosition; //Pega a posição de onde meu tiro deve nascer
 
     //Variáveis do timer do tiro
-    [SerializeField] private float shotTimer = 0.9f;
+    private float shotTimer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +24,9 @@ public class Enemie01Controller : EnemyFather
 
         //Dando velocidade ao meu RigidBody
         meuRB.linearVelocity = new Vector2(0f, -velocidade);
+
+        //Inicio um valor aleatório para o tiro do Inimigo 1
+        shotTimer = Random.Range(2f, 3.5f);
     }
 
     // Update is called once per frame

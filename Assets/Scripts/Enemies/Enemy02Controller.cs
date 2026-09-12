@@ -12,7 +12,7 @@ public class Enemy02Controller : EnemyFather
     [SerializeField] private Transform tiroPosition; //Pego a posição de onde o tiro deve sair
 
     //Variáveis do tiro
-    [SerializeField] private float shotTime = 1f; // Tempo para atirar
+    private float shotTime; // Tempo para atirar
 
     //Variáveis de movimento
     [SerializeField] private int side; // Descobre em qual lado da tela estou -> 0 ESQUERDA || 1 DIREITA
@@ -26,6 +26,9 @@ public class Enemy02Controller : EnemyFather
 
         //Dando Velocidade ao meu Rigid para ele ir para baixo ao iniciar o game
         meuRB.linearVelocity = new Vector2(0f, -velocidade);
+
+        //Inicio um valor aleatório para o tiro do Inimigo 2
+        shotTime = UnityEngine.Random.Range(3f, 5f);
     }
 
     // Update is called once per frame

@@ -167,7 +167,7 @@ public class GameController : MonoBehaviour
     private void CallBoss()
     {
         //Diminui o timer de criação do BOSS
-        if (createBossAnimTime > 0 && level >= 10) createBossAnimTime -= Time.deltaTime;
+        if (createBossAnimTime > 0 && level >= 10 && finishWaves) createBossAnimTime -= Time.deltaTime;
 
         //Assim que chega no level 10, ele cria a animação do BOSS na cena e apenas após ele passar 3 segundos
         if (level >= 10 && createBossAnimTime <= 0 && !bossAnimCreated && finishWaves)

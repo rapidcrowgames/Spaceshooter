@@ -425,6 +425,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2262598416611888355, guid: 023e5082b2f5b1a48b9f2cbc1a0547fa, type: 3}
+      propertyPath: life
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2638318099301491432, guid: 023e5082b2f5b1a48b9f2cbc1a0547fa, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1064,7 +1068,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5923407724003942715, guid: c3968c7d0d3614948ba90fff24fc7232, type: 3}
       propertyPath: level
-      value: 10
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923407724003942715, guid: c3968c7d0d3614948ba90fff24fc7232, type: 3}
+      propertyPath: pontos
+      value: 1700
       objectReference: {fileID: 0}
     - target: {fileID: 5923407724003942715, guid: c3968c7d0d3614948ba90fff24fc7232, type: 3}
       propertyPath: textoLevel
@@ -1074,14 +1082,6 @@ PrefabInstance:
       propertyPath: textoPontos
       value: 
       objectReference: {fileID: 2070587209}
-    - target: {fileID: 5923407724003942715, guid: c3968c7d0d3614948ba90fff24fc7232, type: 3}
-      propertyPath: createBossPosition
-      value: 
-      objectReference: {fileID: 6764789192921956571, guid: 967c14f18dfac2c45be1fb39aff40796, type: 3}
-    - target: {fileID: 5923407724003942715, guid: c3968c7d0d3614948ba90fff24fc7232, type: 3}
-      propertyPath: createBossAnimPosition
-      value: 
-      objectReference: {fileID: 1696980230702392458, guid: 915d30e582573e14d92304c2920cd5b7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

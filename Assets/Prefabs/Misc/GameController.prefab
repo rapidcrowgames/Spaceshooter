@@ -49,10 +49,10 @@ MonoBehaviour:
   - {fileID: 1318946224530057695, guid: fcba2fd626f7aa74d8a1502bdd733705, type: 3}
   boss: {fileID: 4528126049614300500, guid: 967c14f18dfac2c45be1fb39aff40796, type: 3}
   bossAnim: {fileID: 1182629021049357163, guid: 915d30e582573e14d92304c2920cd5b7, type: 3}
-  createBossAnimPosition: {fileID: 0}
-  createBossPosition: {fileID: 0}
+  createBossAnimPosition: {fileID: 1696980230702392458, guid: 915d30e582573e14d92304c2920cd5b7, type: 3}
+  createBossPosition: {fileID: 6764789192921956571, guid: 967c14f18dfac2c45be1fb39aff40796, type: 3}
   pontos: 0
-  level: 1
+  level: 10
   waitTime: 2
   xMax: 7
   xMin: -7

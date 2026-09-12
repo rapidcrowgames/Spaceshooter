@@ -162,9 +162,6 @@ public class GameController : MonoBehaviour
             //Cria a instancia na posição númerada
             GameObject bossAnimation = Instantiate(bossAnim, createBossAnimPosition.position, Quaternion.identity);
 
-            //Criou a animação e já começa a diminuir o timer para criar o boss verdadeiro
-            if (createBossTime > 0) createBossTime -= Time.deltaTime;
-
             //Após 7 segundos, ele destroy a animação
             Destroy(bossAnimation, 7f);
 
@@ -174,6 +171,9 @@ public class GameController : MonoBehaviour
             //Flag para criar o boss
             bossCreated = true;
         }
+
+        //Criou a animação e já começa a diminuir o timer para criar o boss verdadeiro
+        if (createBossTime > 0 && bossAnimCreated) createBossTime -= Time.deltaTime;
 
         //E após 7 segundos ele cria o boss e usa TAG para garantir que crie o BOSS só uma vez
         if (createBossTime <= 0 && bossCreated)

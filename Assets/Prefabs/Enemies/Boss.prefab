@@ -234,3 +234,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84ce479f1609f248a5a6aee5bc626af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossController
+  life: 50
+  particulaMorte: {fileID: 8311986738848114817, guid: dfc4d829df12be04d9f6f83c7e6954b1, type: 3}
+  velocidade: 3
+  shotVel: 6
+  pontos: 0
+  powerUp: {fileID: 8456432970777975692, guid: dd0b0d83b628a3a478a707c2b46b03aa, type: 3}
+  enemyChance: 0

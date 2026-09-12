@@ -185,8 +185,6 @@ public class PlayerController : MonoBehaviour
     //MÉTODO de fazer o escudo seguir o player
     private void ShieldFollow()
     {
-        Debug.Log(shieldQTD);
-
         //Verifica se o escudo está realmente ativo
         if (shieldOn)
         {

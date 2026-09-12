@@ -31,11 +31,15 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoPontos; //Pega o texto que exibe a pontuação
     [SerializeField] private TextMeshProUGUI textoLevel; //Pega o texto que exibe o level
 
+    //Variáveis do gerador de WAVES
+    private int inimigosCriados; //Cria 4 inimigos de acordo com level: [SE for level 2 cria 8, se for level 3 cria 12 e etc.]
+    private bool finishWaves = false; //Tag para identificar que todos inimigos da última WAVE morreram e que acabou.
+
 
     //Variáveis do MÉTODO de criar o BOSS
-    private float createBossAnimTime = 3f; // Controla quanto tempo vai levar para criar o boss na cena
-    private float createBossTime = 6.9f; // Contador que diminuir para criar o BOSS definitivo
-    private bool bossCreated = false; // Flag que garante que o boss seja criado só uma vez
+    private float createBossAnimTime = 3f; //Controla quanto tempo vai levar para criar o boss na cena
+    private float createBossTime = 6.9f; //Contador que diminuir para criar o BOSS definitivo
+    private bool bossCreated = false; //Flag que garante que o boss seja criado só uma vez
     private bool bossAnimCreated = false; //Flag que garante que a animação seja criada uma vez só
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -91,14 +95,17 @@ public class GameController : MonoBehaviour
          * DE ACORDO COM O NÍVEL DA PARTIDA
         */
 
+        Debug.Log(inimigosCriados);
+        Debug.Log(qtdInimigos);
+
         //SE o timer ainda não for 0, ele diminui o tempo do timer
         if (createTimeEnemies > 0) createTimeEnemies -= Time.deltaTime;
 
         //SE o timer chegou em 0, ele cria novos inimigos
         if (createTimeEnemies <= 0 && qtdInimigos <= 0 && level < 10)
         {
-            //Variáveis do laço
-            int inimigosCriados = level * 4; //Cria 4 inimigos de acordo com level: [SE for level 2 cria 8, se for level 3 cria 12 e etc.]
+            //Dou valor a variável de quantos inimigos devem ser criados por WAVE
+            inimigosCriados = level * 4;
 
             //Variável que verifica quantas tentativas teve o while para evitar travar o jogo
             int tentativas = 0;
@@ -142,11 +149,17 @@ public class GameController : MonoBehaviour
                 }
                 
                 GameObject novoInimigo = Instantiate(inimigos[arrayInd], spawnPosition, Quaternion.identity);
-                
 
                 //Aumenta a QTD de inimigos mortos
                 qtdInimigos++;
             }
+        }
+
+        //SE chegar no nível 10 que é do BOSS, e todos inimigos da WAVE 9 já foram mortos
+        if (level >= 10 && qtdInimigos <= 0)
+        {
+            //A flag que acabou a última WAVE é ativada, e então o BOSS está ativo
+            finishWaves = true;
         }
     }
 
@@ -157,7 +170,7 @@ public class GameController : MonoBehaviour
         if (createBossAnimTime > 0 && level >= 10) createBossAnimTime -= Time.deltaTime;
 
         //Assim que chega no level 10, ele cria a animação do BOSS na cena e apenas após ele passar 3 segundos
-        if (level >= 10 && createBossAnimTime <= 0 && !bossAnimCreated)
+        if (level >= 10 && createBossAnimTime <= 0 && !bossAnimCreated && finishWaves)
         {
             //Cria a instancia na posição númerada
             GameObject bossAnimation = Instantiate(bossAnim, createBossAnimPosition.position, Quaternion.identity);

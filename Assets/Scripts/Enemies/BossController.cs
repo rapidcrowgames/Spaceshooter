@@ -6,11 +6,17 @@ public class BossController : EnemyFather
 
     //Variáveis de COMPONENTES do jogo
     [SerializeField] private Rigidbody2D meuRB; //Pega meu RigidBody2D
+    [SerializeField] private GameObject bossShot; //Pega qual é o tiro do BOSS
 
     //Variáveis para pegar POSIÇÕES E TRANSFORM
-    [SerializeField] private Transform ShotLeft; //Pega a posição do tiro da esquerda
-    [SerializeField] private Transform ShotRight; //Pega a posição do tiro da direita
-    [SerializeField] private Transform ShotCenter; //Pega a posição do tiro do centro
+    [SerializeField] private Transform shotLeft; //Pega a posição do tiro da esquerda
+    [SerializeField] private Transform shotRight; //Pega a posição do tiro da direita
+    [SerializeField] private Transform shotCenter; //Pega a posição do tiro do centro
+
+    //Variáveis de controle do BOSS
+    [SerializeField] private int shotLevel = 1; //Define qual o level do tiro do BOSS (Muda de acordo com o ESTADO do boss)
+    private float shotTimer = 0f; //Cuida da velocidade em que o tiro será disparado
+    private PlayerController player; //Variável que pega o player controller (Script do player)
 
 
     //Variáveis de controle
@@ -21,6 +27,9 @@ public class BossController : EnemyFather
     {
         //Pegando meu Rigibody2D
         meuRB = GetComponent<Rigidbody2D>();
+
+        //Pegando meu script do player
+        player = FindFirstObjectByType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -28,6 +37,9 @@ public class BossController : EnemyFather
     {
         //USA OS MÉTODOS E MACHINE
         StateMachine();
+
+        //Método dos tiros
+        ShotBoss();
     }
 
     //MÁQUINA DE ESTADOS DO BOSS 
@@ -38,7 +50,8 @@ public class BossController : EnemyFather
     {
         state1,
         state2,
-        state3
+        state3,
+        stateDeath
     }
 
     //Variável para o SWITCH do tipo do ENUM
@@ -62,6 +75,9 @@ public class BossController : EnemyFather
             case action.state3:
                 State03();
                 break;
+            case action.stateDeath:
+                StateDeath();
+                break;
         }
 
         #endregion
@@ -72,6 +88,7 @@ public class BossController : EnemyFather
 
     //ESTADOS
     #region
+
     private void State01() //Estado 1 do BOSS
     {
         //OBJETIVO DO ESTADO
@@ -80,13 +97,15 @@ public class BossController : EnemyFather
          * O BOSS vai se movimentar na esquerda e direita, indo e voltando
          */
 
+        Debug.Log("Estado 1");
+
         //Escolhe aleatóriamente para qual lado ele sai primeiro
         var side = Random.Range(0, 2) == 0 ? -2f : 2f;
 
         //Faz o boss se mover para direita e esquerda SE ainda não escolhi uma direção
         if (!sideChoice)
         {
-            meuRB.linearVelocity = new Vector2(side, 0f) * velocidade;
+            meuRB.linearVelocity = new Vector2(side, 0f);
 
             //Já escolhi um lado
             sideChoice = true;
@@ -96,12 +115,25 @@ public class BossController : EnemyFather
         if (transform.position.x <= -5.8f)
         {
             //Vou para a direita
-            meuRB.linearVelocity = new Vector2(2f, 0f) * velocidade;
+            meuRB.linearVelocity = new Vector2(velocidade, 0f);
         }
         else if (transform.position.x >= 5.8f) //SE ele bater do lado DIREITO 
         {
             //Vou para a esquerda
-            meuRB.linearVelocity = new Vector2(-2f, 0f) * velocidade;
+            meuRB.linearVelocity = new Vector2(-velocidade, 0f);
+        }
+
+        //SE a minha vida chegar em 72, eu mudo de estado e o meu nível do tiro
+        if (life <= 72)
+        {
+            //Mudo o level do meu tiro
+            shotLevel = 2;
+
+            //Mudo meu estado
+            boss = action.state2;
+
+            //Zero meu SideChoice
+            sideChoice = false;
         }
     }
 
@@ -110,8 +142,40 @@ public class BossController : EnemyFather
         //OBJETIVO DO ESTADO
         /*
          * O BOSS vai atirar apenas do CENTRO (QUE VAI NA DIREÇÃO DO PLAYER)
-         * O BOSS vai continuar se movendo na horizontal
+         * O BOSS vai ficar parado no centro
          */
+
+        Debug.Log("Estado 2");
+
+        // Distância mínima para considerar que chegou ao centro
+        float centerTolerance = 0.1f;
+
+        // SE ainda estou longe do centro
+        if (Mathf.Abs(transform.position.x) > centerTolerance)
+        {
+            // Descobre para qual lado preciso andar para chegar ao X = 0
+            float direction = Mathf.Sign(-transform.position.x);
+
+            meuRB.linearVelocity = new Vector2(direction * velocidade, 0f);
+        }
+        else
+        {
+            // Cheguei perto o suficiente do centro
+            meuRB.linearVelocity = Vector2.zero;
+
+            // Garante que fico exatamente no centro
+            transform.position = new Vector2(0f, transform.position.y);
+        }
+
+        //SE minha vida chegar a 36 eu vou para o próximo estado, e mudo meu level do tiro
+        if (life <= 36)
+        {
+            //Mudo meu level do tiro
+            shotLevel = 3;
+
+            //Mudo meu estado
+            boss = action.state3;
+        }
     }
 
     private void State03() //Estado 3 do BOSS
@@ -119,8 +183,46 @@ public class BossController : EnemyFather
         //OBJETIVO DO ESTADO
         /*
          * O BOSS vai atirar de todas posições, ASAS e CENTRO
-         * O BOSS vai ficar parado no centro
+         * O BOSS vai ficar se movendo para os lados
          */
+
+        Debug.Log("Estado 3");
+
+        //Escolhe aleatóriamente para qual lado ele sai primeiro
+        var side = Random.Range(0, 2) == 0 ? -2f : 2f;
+
+        //Faz o boss se mover para direita e esquerda SE ainda não escolhi uma direção
+        if (!sideChoice)
+        {
+            meuRB.linearVelocity = new Vector2(side, 0f);
+
+            //Já escolhi um lado
+            sideChoice = true;
+        }
+
+        //SE ele bater na parede do lado ESQUERDO ele muda a direção
+        if (transform.position.x <= -5.8f)
+        {
+            //Vou para a direita
+            meuRB.linearVelocity = new Vector2(velocidade, 0f);
+        }
+        else if (transform.position.x >= 5.8f) //SE ele bater do lado DIREITO 
+        {
+            //Vou para a esquerda
+            meuRB.linearVelocity = new Vector2(-velocidade, 0f);
+        }
+
+        //SE minha vida chegar a zero eu morro / vou para o estado de morte
+        if (life <= 0)
+        {
+            //Vou para o estado de morte
+            boss = action.stateDeath;
+        }
+    }
+
+    private void StateDeath() //Estado de morte do boss
+    {
+        Debug.Log("Estado MORTE");
     }
 
     #endregion
@@ -132,7 +234,77 @@ public class BossController : EnemyFather
     //Método dos TIROS do boss
     private void ShotBoss()
     {
+        //Diminui o timer de tiro SE começou a fase do boss
+        if (shotTimer > 0) shotTimer -= Time.deltaTime;
+        
+        //SE o boss está no level 1 do tiro, ele cria apenas tiros nas ASAS
+        if (shotLevel == 1 && shotTimer <= 0 && player)
+        {
+            //Coloca a instancia dos tiros em variáveis (Criando os tiros nas posições das asas)
+            GameObject tiroLeft = Instantiate(bossShot, shotLeft.position, Quaternion.identity);
+            GameObject tiroRight = Instantiate(bossShot, shotRight.position, Quaternion.identity);
 
+            //Pegando o RB de cada tiro
+            Rigidbody2D tLeftRb = tiroLeft.GetComponent<Rigidbody2D>();
+            Rigidbody2D tRightRb = tiroRight.GetComponent<Rigidbody2D>();
+
+            //Aplicando a velocidade e movimento ao tiro
+            tLeftRb.linearVelocity = Vector2.down * shotVel;
+            tRightRb.linearVelocity = Vector2.down * shotVel;
+
+            //Reseta o timer
+            shotTimer = 1.5f;
+        }
+
+        //SE o boss está no level 2 do tiro, ele cria apenas tiros no centro 
+        if (shotLevel == 2 && shotTimer <= 0 && player)
+        {
+            //Cria apenas o tiro no centro
+            GameObject tiroCenter = Instantiate(bossShot, shotCenter.position, Quaternion.identity);
+
+            //Pegando qual a direção do player
+            Vector2 direction = player.transform.position - tiroCenter.transform.position;
+
+            //Pengado meu RigidBody
+            Rigidbody2D tCenterRb = tiroCenter.GetComponent<Rigidbody2D>();
+
+            //Normalizando minha velocidade
+            direction.Normalize();
+
+            //Aplicando a velocidade com base na minha direção
+            tCenterRb.linearVelocity = direction * shotVel;
+
+            //Reseta o timer
+            shotTimer = 0.8f;
+        }
+
+        //SE o boss está no level 3 de tiro, ele cria tiro de todas direções
+        if (shotLevel == 3 && shotTimer <= 0 && player)
+        {
+            //Coloca a instancia dos tiros em variáveis (Criando os tiros nas posições das asas e no centro)
+            GameObject tiroLeft = Instantiate(bossShot, shotLeft.position, Quaternion.identity);
+            GameObject tiroRight = Instantiate(bossShot, shotRight.position, Quaternion.identity);
+            GameObject tiroCenter = Instantiate(bossShot, shotCenter.position, Quaternion.identity);
+
+            //Definindo a direção do meu tiro do meio
+            Vector2 direction = player.transform.position - tiroCenter.transform.position;
+
+            //Pegando o RB de cada tiro
+            Rigidbody2D tLeftRb = tiroLeft.GetComponent<Rigidbody2D>();
+            Rigidbody2D tRightRb = tiroRight.GetComponent<Rigidbody2D>();
+            Rigidbody2D tCenterRb = tiroCenter.GetComponent<Rigidbody2D>();
+
+            //Normalizando a velocidade da minha direção
+            direction.Normalize();
+
+            //Aplicando a velocidade aos meus tiros
+            tLeftRb.linearVelocity = Vector2.down * shotVel;
+            tRightRb.linearVelocity = Vector2.down * shotVel;
+            tCenterRb.linearVelocity = direction * shotVel;
+
+            //Reseta o timer + tempo 
+            shotTimer = 1.2f;
+        }
     }
 
 

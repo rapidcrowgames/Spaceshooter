@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84ce479f1609f248a5a6aee5bc626af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossController
-  life: 50
+  life: 110
   particulaMorte: {fileID: 8311986738848114817, guid: dfc4d829df12be04d9f6f83c7e6954b1, type: 3}
   velocidade: 3
   shotVel: 6
@@ -276,9 +276,11 @@ MonoBehaviour:
   powerUp: {fileID: 8456432970777975692, guid: dd0b0d83b628a3a478a707c2b46b03aa, type: 3}
   enemyChance: 0
   meuRB: {fileID: 0}
-  ShotLeft: {fileID: 8836379352994051478}
-  ShotRight: {fileID: 5078984464164360937}
-  ShotCenter: {fileID: 5527397129394206914}
+  bossShot: {fileID: 5160738498116447968, guid: ca69676cbf78be840b02a973f4f4a50b, type: 3}
+  shotLeft: {fileID: 8836379352994051478}
+  shotRight: {fileID: 5078984464164360937}
+  shotCenter: {fileID: 5527397129394206914}
+  shotLevel: 1
 --- !u!1 &6112108223285631860
 GameObject:
   m_ObjectHideFlags: 0

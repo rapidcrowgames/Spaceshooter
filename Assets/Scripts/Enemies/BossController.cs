@@ -26,6 +26,9 @@ public class BossController : EnemyFather
     //Pega as minhas próprias coisas
     private void Awake()
     {
+        //Diz que não sou um boss
+        iamBoss = true;
+
         //Pegando meu Rigibody2D
         meuRB = GetComponent<Rigidbody2D>();
     }

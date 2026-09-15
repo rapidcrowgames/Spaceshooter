@@ -8,6 +8,7 @@ public class EnemyFather : MonoBehaviour
     [SerializeField] protected float velocidade; // Velocidade de movimento do inimigo
     [SerializeField] protected float shotVel; // Velocidade do projétil do tiro
     [SerializeField] protected int pontos; //Variável que cuida quantos pontos cada inimigo dará ao player
+    [SerializeField] protected bool iamBoss; //Variável que controla se o inimigo atual é um BOSS ou não
 
     [SerializeField] protected GameObject powerUp; //Pega o objeto power up
     [SerializeField] protected float enemyChance; //Define no painel uma chance que cada inimigo tem de dropar o power up
@@ -83,13 +84,6 @@ public class EnemyFather : MonoBehaviour
     {
         //SE eu colidir com a parede destruidora
         if (other.CompareTag("Destruidor"))
-        {
-            //Eu morro
-            life = 0;
-        }
-
-        //SE eu colidir com o escudo do player
-        if (other.CompareTag("Shield"))
         {
             //Eu morro
             life = 0;

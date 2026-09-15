@@ -95,9 +95,6 @@ public class GameController : MonoBehaviour
          * DE ACORDO COM O NÍVEL DA PARTIDA
         */
 
-        Debug.Log(inimigosCriados);
-        Debug.Log(qtdInimigos);
-
         //SE o timer ainda não for 0, ele diminui o tempo do timer
         if (createTimeEnemies > 0) createTimeEnemies -= Time.deltaTime;
 

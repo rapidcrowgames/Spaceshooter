@@ -19,6 +19,9 @@ public class Enemie01Controller : EnemyFather
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //Diz que não sou um boss
+        iamBoss = false;
+
         //Pegando meu RigidBody ao iniciar o game
         meuRB = GetComponent<Rigidbody2D>();
 
@@ -74,6 +77,13 @@ public class Enemie01Controller : EnemyFather
             life = 0;
 
             //O player perder vida, está no código do player quando ele colidir com "Enemy"
+        }
+
+        //SE eu colidir com o escudo do player
+        if (other.gameObject.CompareTag("Shield"))
+        {
+            //Eu morro
+            life = 0;
         }
     }
 

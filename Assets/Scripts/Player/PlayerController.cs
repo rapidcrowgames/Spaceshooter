@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,6 +39,10 @@ public class PlayerController : MonoBehaviour
     //Variáveis dos tipos de tiro e level do tiro
     [SerializeField] private int levelShot = 0; //Level do tiro do player
 
+    //Variáveis de texto
+    [SerializeField] private TextMeshProUGUI txtLife; //Pega o texto da vida para o HUD
+    [SerializeField] private TextMeshProUGUI txtShield; //Pega o texto da escudo para o HUD
+
 
     //Variáveis de espaço na cena
     [SerializeField] private float xMin; //Limite MIN do X
@@ -62,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
         PerdeVida(); //Método de morrer
         ShieldFollow(); //Método de fazer o escudo me seguir
+        PlayerHUD(); //Método que atualiza do HUD do player
     }
 
     ///<summary>
@@ -236,5 +242,12 @@ public class PlayerController : MonoBehaviour
     public int GetLevelShot()
     {
         return levelShot;
+    }
+
+    //MÉTODO do HUD
+    private void PlayerHUD()
+    {
+        //Exibe a QTD de vida na variável
+        txtLife.text = Mathf.Round(life).ToString();
     }
 }

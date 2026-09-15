@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     //Variáveis de texto
     [SerializeField] private TextMeshProUGUI txtLife; //Pega o texto da vida para o HUD
-    [SerializeField] private TextMeshProUGUI txtShield; //Pega o texto da escudo para o HUD
+    [SerializeField] private TextMeshProUGUI txtShield; //Pega o texto do escudo para o HUD
 
 
     //Variáveis de espaço na cena
@@ -249,5 +249,8 @@ public class PlayerController : MonoBehaviour
     {
         //Exibe a QTD de vida na variável
         txtLife.text = Mathf.Round(life).ToString();
+
+        //Exibe a QTD de escudos
+        txtShield.text = Mathf.Round(shieldQTD).ToString();
     }
 }

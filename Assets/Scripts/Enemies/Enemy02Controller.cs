@@ -35,7 +35,7 @@ public class Enemy02Controller : EnemyFather
     void Update()
     {
         //Usa os métodos do pai
-        DeathEnemy(); //Método de morrer
+        DeathEnemy(1f); //Método de morrer
 
         Enemy2Shot(); //Método de atirar
 

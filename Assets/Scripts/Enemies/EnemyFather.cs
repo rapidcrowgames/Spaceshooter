@@ -30,7 +30,7 @@ public class EnemyFather : MonoBehaviour
     /// </summary>
 
     //Método de morte
-    public void DeathEnemy()
+    public void DeathEnemy(float partyTime)
     {
         //Variável para descobrir se estou visivel
         bool visivel = GetComponentInChildren<SpriteRenderer>().isVisible;
@@ -45,7 +45,7 @@ public class EnemyFather : MonoBehaviour
             GameObject deathParty = Instantiate(particulaMorte, transform.position, Quaternion.identity);
 
             //Depois de 1f segundos eu me destruo
-            Destroy(deathParty, 1f);
+            Destroy(deathParty, partyTime);
 
             //Quando eu morrer, o jogador ganha pontos
             var GameController = FindFirstObjectByType<GameController>();

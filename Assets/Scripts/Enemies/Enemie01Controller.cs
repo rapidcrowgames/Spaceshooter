@@ -35,7 +35,7 @@ public class Enemie01Controller : EnemyFather
         //Usa os métodos
         EnemyShot(); //Método do tiro do inimigo
 
-        DeathEnemy(); //Método de morrer
+        DeathEnemy(1f); //Método de morrer
     }
 
     //MÉTODOS

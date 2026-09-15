@@ -4,30 +4,35 @@ public class BossController : EnemyFather
 {
     //VARIÁVEIS
 
+    [Header("Componentes")]
     //Variáveis de COMPONENTES do jogo
-    [SerializeField] private Rigidbody2D meuRB; //Pega meu RigidBody2D
+    private Rigidbody2D meuRB; //Pega meu RigidBody2D
     [SerializeField] private GameObject bossShot; //Pega qual é o tiro do BOSS
+    [SerializeField] private GameObject bossDeathAnim; //Pega a animação de morte do BOSS
 
+    [Header("Posições e Transform")]
     //Variáveis para pegar POSIÇÕES E TRANSFORM
     [SerializeField] private Transform shotLeft; //Pega a posição do tiro da esquerda
     [SerializeField] private Transform shotRight; //Pega a posição do tiro da direita
     [SerializeField] private Transform shotCenter; //Pega a posição do tiro do centro
 
+    [Header("Variáveis de controle do BOSS")]
     //Variáveis de controle do BOSS
     [SerializeField] private int shotLevel = 1; //Define qual o level do tiro do BOSS (Muda de acordo com o ESTADO do boss)
     private float shotTimer = 0f; //Cuida da velocidade em que o tiro será disparado
     private PlayerController player; //Variável que pega o player controller (Script do player)
-
-
-    //Variáveis de controle
     private bool sideChoice = false; //Define se inicialmente no ESTADO o BOSS já escolheu uma lado para andar
+
+    //Pega as minhas próprias coisas
+    private void Awake()
+    {
+        //Pegando meu Rigibody2D
+        meuRB = GetComponent<Rigidbody2D>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //Pegando meu Rigibody2D
-        meuRB = GetComponent<Rigidbody2D>();
-
         //Pegando meu script do player
         player = FindFirstObjectByType<PlayerController>();
     }
@@ -97,34 +102,11 @@ public class BossController : EnemyFather
          * O BOSS vai se movimentar na esquerda e direita, indo e voltando
          */
 
-        Debug.Log("Estado 1");
+        //Faz o boss se mover na horizontal
+        MoveHorizontalBoss();
 
-        //Escolhe aleatóriamente para qual lado ele sai primeiro
-        var side = Random.Range(0, 2) == 0 ? -2f : 2f;
-
-        //Faz o boss se mover para direita e esquerda SE ainda não escolhi uma direção
-        if (!sideChoice)
-        {
-            meuRB.linearVelocity = new Vector2(side, 0f);
-
-            //Já escolhi um lado
-            sideChoice = true;
-        }
-
-        //SE ele bater na parede do lado ESQUERDO ele muda a direção
-        if (transform.position.x <= -5.8f)
-        {
-            //Vou para a direita
-            meuRB.linearVelocity = new Vector2(velocidade, 0f);
-        }
-        else if (transform.position.x >= 5.8f) //SE ele bater do lado DIREITO 
-        {
-            //Vou para a esquerda
-            meuRB.linearVelocity = new Vector2(-velocidade, 0f);
-        }
-
-        //SE a minha vida chegar em 72, eu mudo de estado e o meu nível do tiro
-        if (life <= 72)
+        //SE a minha vida chegar em 200, eu mudo de estado e o meu nível do tiro
+        if (life <= 200)
         {
             //Mudo o level do meu tiro
             shotLevel = 2;
@@ -144,8 +126,6 @@ public class BossController : EnemyFather
          * O BOSS vai atirar apenas do CENTRO (QUE VAI NA DIREÇÃO DO PLAYER)
          * O BOSS vai ficar parado no centro
          */
-
-        Debug.Log("Estado 2");
 
         // Distância mínima para considerar que chegou ao centro
         float centerTolerance = 0.1f;
@@ -167,8 +147,8 @@ public class BossController : EnemyFather
             transform.position = new Vector2(0f, transform.position.y);
         }
 
-        //SE minha vida chegar a 36 eu vou para o próximo estado, e mudo meu level do tiro
-        if (life <= 36)
+        //SE minha vida chegar a 100 eu vou para o próximo estado, e mudo meu level do tiro
+        if (life <= 100)
         {
             //Mudo meu level do tiro
             shotLevel = 3;
@@ -186,31 +166,8 @@ public class BossController : EnemyFather
          * O BOSS vai ficar se movendo para os lados
          */
 
-        Debug.Log("Estado 3");
-
-        //Escolhe aleatóriamente para qual lado ele sai primeiro
-        var side = Random.Range(0, 2) == 0 ? -2f : 2f;
-
-        //Faz o boss se mover para direita e esquerda SE ainda não escolhi uma direção
-        if (!sideChoice)
-        {
-            meuRB.linearVelocity = new Vector2(side, 0f);
-
-            //Já escolhi um lado
-            sideChoice = true;
-        }
-
-        //SE ele bater na parede do lado ESQUERDO ele muda a direção
-        if (transform.position.x <= -5.8f)
-        {
-            //Vou para a direita
-            meuRB.linearVelocity = new Vector2(velocidade, 0f);
-        }
-        else if (transform.position.x >= 5.8f) //SE ele bater do lado DIREITO 
-        {
-            //Vou para a esquerda
-            meuRB.linearVelocity = new Vector2(-velocidade, 0f);
-        }
+        //Faz o boss se mover na horizontal
+        MoveHorizontalBoss();
 
         //SE minha vida chegar a zero eu morro / vou para o estado de morte
         if (life <= 0)
@@ -222,7 +179,16 @@ public class BossController : EnemyFather
 
     private void StateDeath() //Estado de morte do boss
     {
+        //OBJETIVO DO ESTADO
+        /*
+         * Ao chegar ao fim da vida, ele reproduz a animação de morte do BOSS 
+         * Depois se destroi
+         */
+
         Debug.Log("Estado MORTE");
+
+        //Uso o método de morte do pai
+        DeathEnemy(4.2f);
     }
 
     #endregion
@@ -253,7 +219,7 @@ public class BossController : EnemyFather
             tRightRb.linearVelocity = Vector2.down * shotVel;
 
             //Reseta o timer
-            shotTimer = 1.5f;
+            shotTimer = 1.1f;
         }
 
         //SE o boss está no level 2 do tiro, ele cria apenas tiros no centro 
@@ -275,7 +241,7 @@ public class BossController : EnemyFather
             tCenterRb.linearVelocity = direction * shotVel;
 
             //Reseta o timer
-            shotTimer = 0.8f;
+            shotTimer = 0.5f;
         }
 
         //SE o boss está no level 3 de tiro, ele cria tiro de todas direções
@@ -303,7 +269,35 @@ public class BossController : EnemyFather
             tCenterRb.linearVelocity = direction * shotVel;
 
             //Reseta o timer + tempo 
-            shotTimer = 1.2f;
+            shotTimer = 0.8f;
+        }
+    }
+
+    //Método do BOSS se mover na horizontal (Direita e esquerda) 
+    private void MoveHorizontalBoss()
+    {
+        //Escolhe aleatóriamente para qual lado ele sai primeiro
+        var side = Random.Range(0, 2) == 0 ? -2f : 2f;
+
+        //Faz o boss se mover para direita e esquerda SE ainda não escolhi uma direção
+        if (!sideChoice)
+        {
+            meuRB.linearVelocity = new Vector2(side, 0f);
+
+            //Já escolhi um lado
+            sideChoice = true;
+        }
+
+        //SE ele bater na parede do lado ESQUERDO ele muda a direção
+        if (transform.position.x <= -5.8f)
+        {
+            //Vou para a direita
+            meuRB.linearVelocity = new Vector2(velocidade, 0f);
+        }
+        else if (transform.position.x >= 5.8f) //SE ele bater do lado DIREITO 
+        {
+            //Vou para a esquerda
+            meuRB.linearVelocity = new Vector2(-velocidade, 0f);
         }
     }
 

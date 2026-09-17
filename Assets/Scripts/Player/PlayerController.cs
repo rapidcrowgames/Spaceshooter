@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     //Variáveis dos tipos de tiro e level do tiro
     [SerializeField] private int levelShot = 0; //Level do tiro do player
 
-    //Variáveis de texto
+    //Variáveis de CANVAS
     [SerializeField] private TextMeshProUGUI txtLife; //Pega o texto da vida para o HUD
     [SerializeField] private TextMeshProUGUI txtShield; //Pega o texto do escudo para o HUD
 

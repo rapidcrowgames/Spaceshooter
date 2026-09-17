@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : EnemyFather
 {
@@ -22,6 +23,11 @@ public class BossController : EnemyFather
     private float shotTimer = 0f; //Cuida da velocidade em que o tiro será disparado
     private PlayerController player; //Variável que pega o player controller (Script do player)
     private bool sideChoice = false; //Define se inicialmente no ESTADO o BOSS já escolheu uma lado para andar
+    [SerializeField] private int lifeMAX; //Define a vida máxima do boss
+
+    [Header("Variáveis do CANVAS")]
+    //VARIÁVEIS DE CANVAS
+    [SerializeField] private Image lifeBar; //Pega a imagem da barra de vida do CANVAS do Boss
 
     //Pega as minhas próprias coisas
     private void Awake()
@@ -48,6 +54,9 @@ public class BossController : EnemyFather
 
         //Método dos tiros
         ShotBoss();
+
+        //Método da atualização da barra de vida do boss
+        LifeUpdate();
     }
 
     //MÁQUINA DE ESTADOS DO BOSS 
@@ -302,6 +311,16 @@ public class BossController : EnemyFather
             //Vou para a esquerda
             meuRB.linearVelocity = new Vector2(-velocidade, 0f);
         }
+    }
+
+    //MÉTODO de diminuir a vida do BOSS
+    private void LifeUpdate()
+    {
+        //Pega a quantidade da barra de vida e deixa ela igual a QTD de vida
+        lifeBar.fillAmount = ((float)life / (float)lifeMAX);
+
+        //Convertendo o valor do FillAmout em 255 para mudar a cor da barra conforme a vida diminui
+        lifeBar.color = new Color32(201, (byte) (lifeBar.fillAmount * 255), 47, 255);
     }
 
 

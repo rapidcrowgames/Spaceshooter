@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float yMin; //Limite MIN do Y
     [SerializeField] private float yMax; //Limite MAX do Y
 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

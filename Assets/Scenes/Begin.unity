@@ -119,17 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &1408271358 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5148962234765233778, guid: 2615597ae89877346b18626023ce2344, type: 3}
-  m_PrefabInstance: {fileID: 3112536862459737325}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83cada588eb7914d82d11919e4d2806, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!1 &1923765571
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +266,11 @@ PrefabInstance:
     - target: {fileID: 929084493161893551, guid: 4f69808b4c37aa141baff8d68588d757, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1408271358}
+      objectReference: {fileID: 5148962234765233778, guid: 2615597ae89877346b18626023ce2344, type: 3}
+    - target: {fileID: 929084493161893551, guid: 4f69808b4c37aa141baff8d68588d757, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
     - target: {fileID: 3142339834894331619, guid: 4f69808b4c37aa141baff8d68588d757, type: 3}
       propertyPath: m_Camera
       value: 
@@ -285,7 +278,11 @@ PrefabInstance:
     - target: {fileID: 4345542052369842489, guid: 4f69808b4c37aa141baff8d68588d757, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1408271358}
+      objectReference: {fileID: 5148962234765233778, guid: 2615597ae89877346b18626023ce2344, type: 3}
+    - target: {fileID: 4345542052369842489, guid: 4f69808b4c37aa141baff8d68588d757, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NewGame
+      objectReference: {fileID: 0}
     - target: {fileID: 6242100108179128073, guid: 4f69808b4c37aa141baff8d68588d757, type: 3}
       propertyPath: m_Name
       value: Canvas

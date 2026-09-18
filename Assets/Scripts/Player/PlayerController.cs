@@ -228,6 +228,12 @@ public class PlayerController : MonoBehaviour
 
             //Me destruo
             Destroy(gameObject);
+
+            //Pegando o GameManager da cena
+            var gameManager = FindFirstObjectByType<GameManager>();
+
+            //Acessando o método de voltar a tela inicial
+            gameManager.InitialScene();
         }
     }
 

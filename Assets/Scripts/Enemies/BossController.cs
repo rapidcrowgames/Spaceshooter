@@ -231,7 +231,7 @@ public class BossController : EnemyFather
             tRightRb.linearVelocity = Vector2.down * shotVel;
 
             //Reseta o timer
-            shotTimer = 1.1f;
+            shotTimer = 0.7f;
         }
 
         //SE o boss está no level 2 do tiro, ele cria apenas tiros no centro 

@@ -71,17 +71,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f562bc21e810dc941ba74d1e707fb58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy02Controller
-  life: 3
+  life: 2
   particulaMorte: {fileID: 8311986738848114817, guid: dfc4d829df12be04d9f6f83c7e6954b1, type: 3}
   velocidade: 2
   shotVel: 3
   pontos: 20
+  iamBoss: 0
   powerUp: {fileID: 8456432970777975692, guid: dd0b0d83b628a3a478a707c2b46b03aa, type: 3}
   enemyChance: 0.9
   meuRB: {fileID: 0}
   tiroInimigo: {fileID: 5160738498116447968, guid: ca69676cbf78be840b02a973f4f4a50b, type: 3}
   tiroPosition: {fileID: 7347094711850546210}
-  shotTime: 2
   side: 0
 --- !u!58 &5411852312308904060
 CircleCollider2D:

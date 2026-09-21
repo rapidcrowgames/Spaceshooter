@@ -9,11 +9,14 @@ public class PowerUp : MonoBehaviour
 
     [SerializeField] private GameObject destroyAnim; //Pega a animação de destruido
 
+    [SerializeField] private Transform transCam; //Pega o Transform da câmera
+
     //Variáveis de controle
     private int vel = 1; //Velocidade de movimento do powerup
     private float timerDestroy = 3f; //Timer para me auto-destruir após 3 segundos
 
     //VARIÁVEIS DE SOM
+    [SerializeField] private AudioSource audioSource; //Pega a caixa de som
     [SerializeField] private AudioClip powerUpSound; //Pega o som do PowerUp
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,7 +46,7 @@ public class PowerUp : MonoBehaviour
             var player = FindAnyObjectByType<PlayerController>();
 
             //Reproduz o som do powerUp
-            AudioSource.PlayClipAtPoint(powerUpSound, transform.position);
+            AudioSource.PlayClipAtPoint(powerUpSound, transCam.position);
 
             //Chamo o método dele
             player.ChangeShot();

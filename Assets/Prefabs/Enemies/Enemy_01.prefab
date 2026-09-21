@@ -196,6 +196,7 @@ MonoBehaviour:
   shotVel: 4
   pontos: 10
   iamBoss: 0
+  transCam: {fileID: 9147050103906145357, guid: 16ece695ed9dcff4fb04bd79b2be4be3, type: 3}
   powerUp: {fileID: 8456432970777975692, guid: dd0b0d83b628a3a478a707c2b46b03aa, type: 3}
   enemyChance: 0.95
   audioSource: {fileID: 7171037940056524174}
@@ -259,7 +260,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 50
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

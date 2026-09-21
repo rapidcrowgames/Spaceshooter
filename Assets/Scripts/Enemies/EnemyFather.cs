@@ -10,6 +10,8 @@ public class EnemyFather : MonoBehaviour
     [SerializeField] protected int pontos; //Variável que cuida quantos pontos cada inimigo dará ao player
     [SerializeField] protected bool iamBoss; //Variável que controla se o inimigo atual é um BOSS ou não
 
+    [SerializeField] protected Transform transCam; //Pega o transform da câmera
+
     [SerializeField] protected GameObject powerUp; //Pega o objeto power up
     [SerializeField] protected float enemyChance; //Define no painel uma chance que cada inimigo tem de dropar o power up
 
@@ -53,7 +55,7 @@ public class EnemyFather : MonoBehaviour
             GameObject deathParty = Instantiate(particulaMorte, transform.position, Quaternion.identity);
 
             //Reproduz o som da explosão
-            audioSource.PlayOneShot(explosionSound);
+            AudioSource.PlayClipAtPoint(explosionSound, transCam.position);
 
             //Depois de 1f segundos eu me destruo
             Destroy(deathParty, partyTime);

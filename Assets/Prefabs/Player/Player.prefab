@@ -217,7 +217,7 @@ MonoBehaviour:
   audioSource: {fileID: 1919607753794399450}
   deathSound: {fileID: 8300000, guid: 6faa0a3fff5655b4fa67ff404a109125, type: 3}
   shotSound: {fileID: 8300000, guid: 7dffb16c298ebde4da2d64ec8c411e68, type: 3}
-  shieldSound: {fileID: 8300000, guid: b8e0d8c7c6436c94ca27e3517d631e7c, type: 3}
+  shieldSound: {fileID: 8300000, guid: 5b75b2951ed4e54478b9bc0d65383790, type: 3}
 --- !u!114 &5057440598235633733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 11
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

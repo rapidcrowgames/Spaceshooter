@@ -51,13 +51,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float yMax; //Limite MAX do Y
 
 
+    //VARIÁVEIS DE SOM
+    [SerializeField] private AudioSource audioSource; //Pega a "caixa de som" 
+    [SerializeField] private AudioClip deathSound; //Pega o som da morte
+    [SerializeField] private AudioClip shotSound; //Pega o som do tiro
+    [SerializeField] private AudioClip shieldSound; //Pega o som do escudo
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //Pegando meu RigidBody
         meuRB = GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
@@ -110,6 +116,9 @@ public class PlayerController : MonoBehaviour
             //Crio a instancia do tiro, no meu X e meu Y definido no paínel do Unity
             novoTiro = Instantiate(tiro[0], shotPosition.position, Quaternion.identity);
 
+            //Reproduz o som de tiro
+            audioSource.PlayOneShot(shotSound);
+
             //Pega o rigidbody do tiro e coloca em uma nova variável
             Rigidbody2D rbTiro = novoTiro.GetComponent<Rigidbody2D>();
 
@@ -124,6 +133,9 @@ public class PlayerController : MonoBehaviour
             //Cria a instancia do tiro, nas laterais e não no centro
             novoTiroEsq = Instantiate(tiro[1], shotPositionLeft.position, Quaternion.identity);
             novoTiroDir = Instantiate(tiro[1], shotPositionRight.position, Quaternion.identity);
+
+            //Reproduz o som de tiro
+            audioSource.PlayOneShot(shotSound);
 
             //Pega o RigidBody do tiro
             Rigidbody2D rbTiroEsq = novoTiroEsq.GetComponent<Rigidbody2D>();
@@ -141,6 +153,9 @@ public class PlayerController : MonoBehaviour
             novoTiroEsq = Instantiate(tiro[2], shotPositionLeft.position, Quaternion.identity);
             novoTiroDir = Instantiate(tiro[2], shotPositionRight.position, Quaternion.identity);
             novoTiro    = Instantiate(tiro[2], shotPosition.position, Quaternion.identity);
+
+            //Reproduz o som de tiro
+            audioSource.PlayOneShot(shotSound);
 
             //Pega o RigidBody do tiro
             Rigidbody2D rbTiroEsq = novoTiroEsq.GetComponent<Rigidbody2D>();
@@ -162,6 +177,9 @@ public class PlayerController : MonoBehaviour
             //Ele cria o escudo na minha posição
             aShield = Instantiate(shield, transform.position, Quaternion.identity);
 
+            //Reproduz o som do escudo
+            audioSource.PlayOneShot(shieldSound);
+
             //Indica que o escudo está ativo
             shieldOn = true;
 
@@ -176,6 +194,9 @@ public class PlayerController : MonoBehaviour
         //SE eu colidir com o tiro do inimigo
         if (other.CompareTag("shotEnemy"))
         {
+            //Reproduz o som de dano / Explosão
+            audioSource.PlayOneShot(deathSound);
+
             life--;
         }
     }
@@ -224,6 +245,9 @@ public class PlayerController : MonoBehaviour
         {
             //Crio a particula de morte
             GameObject deathParty = Instantiate(particulaMorte, transform.position, Quaternion.identity);
+
+            //Reproduz o som de explosão / Morte
+            audioSource.PlayOneShot(deathSound);
 
             //Destruo a particula em 1 segundo
             Destroy(deathParty, 1f);

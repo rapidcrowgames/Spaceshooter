@@ -57,6 +57,9 @@ public class Enemie01Controller : EnemyFather
             //Crio a instancia do tiro em uma variável e faço ele nascer na minha posição no meu X e no meu Y
             GameObject novoTiro = Instantiate(tiroInimigo, shotPosition.position, Quaternion.identity);
 
+            //Reproduz o som do tiro
+            audioSource.PlayOneShot(shotSound);
+
             //Pego o RigidBody do tiro
             Rigidbody2D rbTiro = novoTiro.GetComponent<Rigidbody2D>();
 

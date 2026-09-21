@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     //Variáveis que pegam Transform e posições da cena
     [SerializeField] private Transform createBossAnimPosition; //Posição que vai criar a animação do boss
     [SerializeField] private Transform createBossPosition; //Posição que vai criar o boss
+    [SerializeField] private Transform transCam; //Pega a posição da câmera
 
     //Variáveis de cena
     [SerializeField] private int pontos = 0; //Pontos do jogo
@@ -42,6 +43,14 @@ public class GameController : MonoBehaviour
     private bool bossCreated = false; //Flag que garante que o boss seja criado só uma vez
     private bool bossAnimCreated = false; //Flag que garante que a animação seja criada uma vez só
 
+    //VARIÁVEIS DE SOM
+    [SerializeField] private AudioClip wavesMusic; //Pega a música das waves
+    [SerializeField] private AudioClip bossMusic; //Pega a música da fase do boss
+    [SerializeField] private AudioSource musicSource; // Cria um controlador dos Áudios
+
+    private bool waveMusicOn = false; //Controla se a música das waves está tocando
+    private bool bossMusicOn = false; //Controla se a música do boss está tocando
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -59,6 +68,9 @@ public class GameController : MonoBehaviour
 
         //Método de criar o BOSS
         CallBoss();
+
+        //Método de trocar de música
+        ChangeSongs();
 
         #endregion
     }
@@ -234,5 +246,39 @@ public class GameController : MonoBehaviour
 
         //Aumenta o tempo de espera a cada level que passa
         //waitTime = level * 8f;
+    }
+
+    //Método para controlar as músicas do jogo
+    private void ChangeSongs()
+    {
+        //Acima da WAVE 9
+        if (level > 9 && !bossMusicOn)
+        {
+            //Para a música anterior
+            musicSource.Stop();
+
+            //Define a música do boss
+            musicSource.clip = bossMusic;
+
+            //Reproduz a música do boss
+            musicSource.Play();
+
+            bossMusicOn = true;
+            waveMusicOn = false;
+        }
+        else if (level <= 9 && !waveMusicOn)
+        {
+            //Para a música anterior
+            musicSource.Stop();
+
+            //Define a música das waves
+            musicSource.clip = wavesMusic;
+
+            //Reproduz a música das waves
+            musicSource.Play();
+
+            waveMusicOn = true;
+            bossMusicOn = false;
+        }
     }
 }

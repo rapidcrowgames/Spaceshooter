@@ -822,6 +822,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257881440}
   m_CullTransparentMesh: 1
+--- !u!4 &1293686367 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9147050103906145357, guid: 16ece695ed9dcff4fb04bd79b2be4be3, type: 3}
+  m_PrefabInstance: {fileID: 3851808182237208680}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1345268464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,6 +1496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameController
       objectReference: {fileID: 0}
+    - target: {fileID: 5923407724003942715, guid: c3968c7d0d3614948ba90fff24fc7232, type: 3}
+      propertyPath: transCam
+      value: 
+      objectReference: {fileID: 1293686367}
     - target: {fileID: 5923407724003942715, guid: c3968c7d0d3614948ba90fff24fc7232, type: 3}
       propertyPath: textoLevel
       value: 

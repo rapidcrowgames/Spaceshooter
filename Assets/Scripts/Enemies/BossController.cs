@@ -222,6 +222,12 @@ public class BossController : EnemyFather
             GameObject tiroLeft = Instantiate(bossShot, shotLeft.position, Quaternion.identity);
             GameObject tiroRight = Instantiate(bossShot, shotRight.position, Quaternion.identity);
 
+            //Reproduz o som do tiro 1x
+            audioSource.PlayOneShot(shotSound);
+
+            //Reproduz o som do tiro 2x
+            audioSource.PlayOneShot(shotSound);
+
             //Pegando o RB de cada tiro
             Rigidbody2D tLeftRb = tiroLeft.GetComponent<Rigidbody2D>();
             Rigidbody2D tRightRb = tiroRight.GetComponent<Rigidbody2D>();
@@ -239,6 +245,9 @@ public class BossController : EnemyFather
         {
             //Cria apenas o tiro no centro
             GameObject tiroCenter = Instantiate(bossShot, shotCenter.position, Quaternion.identity);
+
+            //Reproduz o som do tiro
+            audioSource.PlayOneShot(shotSound);
 
             //Pegando qual a direção do player
             Vector2 direction = player.transform.position - tiroCenter.transform.position;
@@ -263,6 +272,13 @@ public class BossController : EnemyFather
             GameObject tiroLeft = Instantiate(bossShot, shotLeft.position, Quaternion.identity);
             GameObject tiroRight = Instantiate(bossShot, shotRight.position, Quaternion.identity);
             GameObject tiroCenter = Instantiate(bossShot, shotCenter.position, Quaternion.identity);
+
+            //Reproduz o som do tiro 1x
+            audioSource.PlayOneShot(shotSound);
+            //Reproduz o som do tiro 2x
+            audioSource.PlayOneShot(shotSound);
+            //Reproduz o som do tiro 3x
+            audioSource.PlayOneShot(shotSound);
 
             //Definindo a direção do meu tiro do meio
             Vector2 direction = player.transform.position - tiroCenter.transform.position;

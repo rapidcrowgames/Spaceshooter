@@ -13,6 +13,9 @@ public class PowerUp : MonoBehaviour
     private int vel = 1; //Velocidade de movimento do powerup
     private float timerDestroy = 3f; //Timer para me auto-destruir após 3 segundos
 
+    //VARIÁVEIS DE SOM
+    [SerializeField] private AudioClip powerUpSound; //Pega o som do PowerUp
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,6 +41,9 @@ public class PowerUp : MonoBehaviour
         {
             //Acesso o player
             var player = FindAnyObjectByType<PlayerController>();
+
+            //Reproduz o som do powerUp
+            AudioSource.PlayClipAtPoint(powerUpSound, transform.position);
 
             //Chamo o método dele
             player.ChangeShot();

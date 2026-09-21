@@ -13,6 +13,13 @@ public class EnemyFather : MonoBehaviour
     [SerializeField] protected GameObject powerUp; //Pega o objeto power up
     [SerializeField] protected float enemyChance; //Define no painel uma chance que cada inimigo tem de dropar o power up
 
+
+    //VARIÁVEIS DE SOM
+    [SerializeField] protected AudioSource audioSource; //Pega a caixa de som
+    [SerializeField] protected AudioClip explosionSound; // Pega o som da explosão do inimigo
+    [SerializeField] protected AudioClip shotSound; // Pega o som do tiro dos inimigos e Chefe
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,6 +51,9 @@ public class EnemyFather : MonoBehaviour
         {
             //Crio a particula da morte
             GameObject deathParty = Instantiate(particulaMorte, transform.position, Quaternion.identity);
+
+            //Reproduz o som da explosão
+            audioSource.PlayOneShot(explosionSound);
 
             //Depois de 1f segundos eu me destruo
             Destroy(deathParty, partyTime);

@@ -68,6 +68,9 @@ public class Enemy02Controller : EnemyFather
             //Cria a instancia do tiro em uma variável
             GameObject novoTiro = Instantiate(tiroInimigo, tiroPosition.position, Quaternion.identity);
 
+            //Reproduz o som do tiro
+            audioSource.PlayOneShot(shotSound);
+
             //Pego a direção
             Vector2 direction = player.transform.position - novoTiro.transform.position;
 

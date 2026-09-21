@@ -226,3 +226,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp
   meuRB: {fileID: 0}
   destroyAnim: {fileID: 13925018866652234, guid: d3cc0abb5abb8d04f83d348332c4a84b, type: 3}
+  powerUpSound: {fileID: 8300000, guid: 0cbd0f5709a45694baffa0ba3e278d2f, type: 3}

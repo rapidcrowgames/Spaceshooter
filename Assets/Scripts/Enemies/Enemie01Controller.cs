@@ -46,13 +46,13 @@ public class Enemie01Controller : EnemyFather
     private void EnemyShot() //Método do tiro do inimigo
     {
         //Pegando a visibilidade dos filhos do Inimigo
-        bool enemyVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+        //bool enemyVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
 
         //Diminuo o timer se ele ainda não for zero
         if (shotTimer > 0) shotTimer -= Time.deltaTime;
 
         //SE o timer chegou em zero, e o inimigo for visível na tela ele cria o tiro
-        if (shotTimer <= 0 && enemyVisible)
+        if (shotTimer <= 0 && transform.position.y <= 4.3f)
         {
             //Crio a instancia do tiro em uma variável e faço ele nascer na minha posição no meu X e no meu Y
             GameObject novoTiro = Instantiate(tiroInimigo, shotPosition.position, Quaternion.identity);

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 107269615387850603}
   - component: {fileID: 4399138255859149809}
+  - component: {fileID: 5210131456364642466}
   m_Layer: 6
   m_Name: BossDeathAnim
   m_TagString: Untagged
@@ -55,6 +56,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5210131456364642466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067796130710703984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39fdf3042288a224195e21aab3b6ddbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossAnimationFinal
 --- !u!1 &5444142417787311450
 GameObject:
   m_ObjectHideFlags: 0

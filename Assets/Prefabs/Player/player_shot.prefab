@@ -134,8 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223a4e565ad646e49990337d3fe291f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShotController
-  eu: {fileID: 0}
   particulaTiro: {fileID: 13925018866652234, guid: d3cc0abb5abb8d04f83d348332c4a84b, type: 3}
+  explosionSound: {fileID: 8300000, guid: 6faa0a3fff5655b4fa67ff404a109125, type: 3}
+  transCam: {fileID: 9147050103906145357, guid: 16ece695ed9dcff4fb04bd79b2be4be3, type: 3}
 --- !u!1 &3861297645329239504
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +215,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2006542917
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: d1776702e2156a945a46ff747ea79954, type: 3}

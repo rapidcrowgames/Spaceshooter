@@ -1497,10 +1497,6 @@ PrefabInstance:
       value: GameController
       objectReference: {fileID: 0}
     - target: {fileID: 5923407724003942715, guid: c3968c7d0d3614948ba90fff24fc7232, type: 3}
-      propertyPath: pontos
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5923407724003942715, guid: c3968c7d0d3614948ba90fff24fc7232, type: 3}
       propertyPath: transCam
       value: 
       objectReference: {fileID: 1293686367}

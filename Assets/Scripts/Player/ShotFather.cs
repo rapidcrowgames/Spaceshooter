@@ -3,6 +3,8 @@ using UnityEngine;
 public class ShotFather : MonoBehaviour
 {
     [SerializeField] protected GameObject particulaTiro; //Pega a particula do tiro
+    //[SerializeField] protected AudioClip explosionSound; //Som do tiro
+    //[SerializeField] protected Transform transCam; //Transform da câmera
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +34,9 @@ public class ShotFather : MonoBehaviour
 
             //Crio na minha posição a animação da particula do tiro e 1.5 segundos depois ela se destrói
             GameObject shotParty = Instantiate(particulaTiro, transform.position, Quaternion.identity);
+
+            //Executa o som da explosão
+            //AudioSource.PlayClipAtPoint(explosionSound, transCam.position);
 
             Destroy(shotParty, 1.5f); //Destruo a animação do impacto
 

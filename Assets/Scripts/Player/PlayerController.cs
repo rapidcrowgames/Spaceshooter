@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform shotPosition; //Pega a posição de onde será criado o tiro
     [SerializeField] private Transform shotPositionLeft; //Pega o lado esquerdo da asa para criar o tiro
     [SerializeField] private Transform shotPositionRight; //Pega o lado direito da asa para criar o tiro
+    [SerializeField] private Transform transCam; //Pega o transform da câmera
+
 
     //Pega a posição do escudo e atualiza ela o tempo todo e OUTRAS variáveis do escudo também
     private bool shieldOn = false; //Booleana para dizer se o escudo está ativado ou não
@@ -247,7 +249,7 @@ public class PlayerController : MonoBehaviour
             GameObject deathParty = Instantiate(particulaMorte, transform.position, Quaternion.identity);
 
             //Reproduz o som de explosão / Morte
-            audioSource.PlayOneShot(deathSound);
+            AudioSource.PlayClipAtPoint(deathSound, transCam.position);
 
             //Destruo a particula em 1 segundo
             Destroy(deathParty, 1f);

@@ -204,6 +204,7 @@ MonoBehaviour:
   shotPosition: {fileID: 363684993637861284}
   shotPositionLeft: {fileID: 6981816045959437316}
   shotPositionRight: {fileID: 6735306642399429347}
+  transCam: {fileID: 9147050103906145357, guid: 16ece695ed9dcff4fb04bd79b2be4be3, type: 3}
   shieldTrans: {fileID: 117830355248402780, guid: 780c320495a0cb74590897bc54aa8397, type: 3}
   shieldQTD: 3
   shieldTime: 3

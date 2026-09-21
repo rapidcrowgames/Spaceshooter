@@ -29,7 +29,7 @@ public class Enemie01Controller : EnemyFather
         meuRB.linearVelocity = new Vector2(0f, -velocidade);
 
         //Inicio um valor aleatório para o tiro do Inimigo 1
-        shotTimer = Random.Range(2f, 3.5f);
+        shotTimer = Random.Range(4f, 4.5f);
     }
 
     // Update is called once per frame
@@ -67,7 +67,7 @@ public class Enemie01Controller : EnemyFather
             rbTiro.linearVelocity = new Vector2(0f, -shotVel);
 
             //Reinicio o timer de forma aleatória
-            shotTimer = Random.Range(1.5f, 2.5f);
+            shotTimer = Random.Range(2.5f, 3.5f);
         }
     }
 

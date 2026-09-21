@@ -10,6 +10,7 @@ public class BossController : EnemyFather
     private Rigidbody2D meuRB; //Pega meu RigidBody2D
     [SerializeField] private GameObject bossShot; //Pega qual é o tiro do BOSS
     [SerializeField] private GameObject bossDeathAnim; //Pega a animação de morte do BOSS
+    [SerializeField] private AudioSource audioSourceBoss; //Pega um Source especifico só para a colisão com os tiros
 
     [Header("Posições e Transform")]
     //Variáveis para pegar POSIÇÕES E TRANSFORM
@@ -339,6 +340,15 @@ public class BossController : EnemyFather
         lifeBar.color = new Color32(201, (byte) (lifeBar.fillAmount * 255), 47, 255);
     }
 
+    //Colisão com tiro do player
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("shotPlayer"))
+        {
+            //Reproduz uma vez apenas o som da explosão
+            audioSourceBoss.PlayOneShot(explosionSound);
+        }
+    }
 
     #endregion
 }

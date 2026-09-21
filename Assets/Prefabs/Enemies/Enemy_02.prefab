@@ -76,7 +76,7 @@ MonoBehaviour:
   particulaMorte: {fileID: 8311986738848114817, guid: dfc4d829df12be04d9f6f83c7e6954b1, type: 3}
   velocidade: 2
   shotVel: 3
-  pontos: 20
+  pontos: 55
   iamBoss: 0
   transCam: {fileID: 9147050103906145357, guid: 16ece695ed9dcff4fb04bd79b2be4be3, type: 3}
   powerUp: {fileID: 8456432970777975692, guid: dd0b0d83b628a3a478a707c2b46b03aa, type: 3}
